@@ -1,0 +1,766 @@
+<!doctype html>
+{% load static %}
+{% load cart_template_tags %}
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+
+
+
+<!-- CSS FOR PRODUCTVIEW BEGIN -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+<!-- Bootstrap core CSS -->
+<link href="{% static 'css_mdbootstrap/bootstrap.min.css' %}" rel="stylesheet">
+<!-- Material Design Bootstrap -->
+<link href="{% static 'css_mdbootstrap/mdb.min.css' %}" rel="stylesheet">
+<!-- Your custom styles (optional) -->
+<link href="{% static 'css_mdbootstrap/style.min.css' %}" rel="stylesheet">
+<!-- CSS FOR PRODUCTVIEW END -->
+
+
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" type="text/css">
+<!-- All icons-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- No Use-->
+<link rel="stylesheet" href="{% static 'css/themify-icons.css' %}" type="text/css">
+<!-- No Use-->
+<link rel="stylesheet" href="{% static 'css/elegant-icons.css' %}" type="text/css">
+<!-- No Use-->
+<link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}" type="text/css">
+<!-- No Use-->
+<link rel="stylesheet" href="{% static 'css/nice-select.css' %}" type="text/css">
+<!-- No Use-->
+<link rel="stylesheet" href="{% static 'css/jquery-ui.min.css' %}" type="text/css">
+<!-- No Use-->
+<link rel="stylesheet" href="{% static 'css/slicknav.min.css' %}" type="text/css">
+<!-- Important-->
+<link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+
+
+<link rel="shortcut icon" href="{% static 'img/saree_house_logo_9.png' %}">
+
+
+
+
+<title>{% block head_title %}{% endblock %}</title>
+    {% block extra_head %}
+    {% endblock %}
+
+<style>
+
+body,html{
+    width:100%;
+    overlay-x:hidden;
+}
+
+
+
+@media only screen and (max-width: 768px) {
+  .Navbar__Items,
+  .Navbar {
+    flex-direction: column;
+  }
+
+.Navbar__Items {
+    display:none;
+  }
+
+.Navbar__Items--right {
+    margin-left:0;
+  }
+
+.Navbar__ToggleShow {
+    display: flex;
+  }
+
+.Navbar__Link-toggle {
+    align-self: flex-end;
+    display: initial;
+    position: absolute;
+    cursor: pointer;
+   }
+}
+
+@media only screen and (max-width: 400px) {
+  .btn-amber {
+    padding: 2px;
+  }
+}
+
+@media only screen and (max-width: 767px){
+    .main-nav{
+        display:none!important;
+    }
+
+    .less-nav{
+        display:initial!important;
+    }
+
+    .sidebar{
+        position:fixed;
+        top:0;
+        bottom:0;
+        left:-250px;
+        background:#262626;
+        width:250px;
+        height:100%;
+        transition: .3s;
+        z-index:1000000;
+    }
+
+    .active{
+        left:0;
+        overflow-y:scroll;
+        overflow-x:hidden;
+
+    }
+    ul{
+        margin:0;
+        padding:20px 0;
+    }
+
+    ul li{
+        list-style:none;
+    }
+
+    ul li a{
+        padding:10px 20px;
+        color: #fff;
+        display:block;
+        text-decoration:none;
+        border-bottom:1px solid rgba(0,0,0,.2);
+    }
+
+    .sidebarBtn{
+        position:absolute;
+        top:0;
+        right:-50px;
+        width:50px;
+        height:50px;
+        box-sizing:border-box;
+        cursor:pointer;
+        background: #252525;
+        border: none;
+        outline: none;
+
+
+    }
+
+    .sidebarBtn span{
+        display:block;
+        width:35px;
+        height:3px;
+        background:#FFFFFF;
+        position:absolute;
+        top:24px;
+        transition:0.3s;
+    }
+
+    .sidebarBtn span:before{
+        content:'';
+        position:absolute;
+        top:-10px;
+        left:0;
+        width:100%;
+        height:3px;
+        background:#FFFFFF;
+        transition:.3s;
+    }
+
+    .sidebarBtn span:after{
+        content:'';
+        position:absolute;
+        top:10px;
+        left:0;
+        width:100%;
+        height:3px;
+        background:#FFFFFF;
+        transition:.3s;
+    }
+
+
+    .sidebarBtn.toggle span{
+        background:transparent;
+    }
+
+    .sidebarBtn.toggle span:before{
+        top:0;
+        transform: rotate(45deg);
+    }
+
+    .sidebarBtn.toggle span:after{
+        top:0;
+        transform: rotate(-45deg);
+    }
+
+
+
+
+
+    /* Accordion styles */
+     .tabs {
+         border-radius: 8px;
+         overflow: hidden;
+         box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.5);
+    }
+     .tab {
+         width: 100%;
+         color: white;
+         overflow: hidden;
+    }
+     .tab-label {
+         display: flex;
+         justify-content: space-between;
+         padding: 1em;
+         background: #252525;
+         font-weight: bold;
+         cursor: pointer;
+        /* Icon */
+    }
+     .tab-label:hover {
+         background:  #e7ab3c;
+    }
+     .tab-label::after {
+         content: "\276F";
+         width: 1em;
+         height: 1em;
+         text-align: center;
+         transition: all 0.35s;
+    }
+     .tab-content {
+         max-height: 0;
+         padding: 0 1em;
+
+         transition: all 0.35s;
+    }
+     .tab-close {
+         display: flex;
+         justify-content: flex-end;
+         padding: 1em;
+         font-size: 0.75em;
+         background: #2c3e50;
+         cursor: pointer;
+    }
+     .tab-close:hover {
+         background: #1a252f;
+    }
+     input:checked + .tab-label {
+         background:  #e7ab3c;
+    }
+     input:checked + .tab-label::after {
+         transform: rotate(90deg);
+    }
+     input:checked ~ .tab-content {
+         max-height: 100vh;
+         padding: 1em;
+    }
+
+
+
+    .col-lg-3{
+        width:40%;
+        height:auto;
+    }
+
+    .mb-4{
+        padding-right:0px;
+    }
+
+
+}
+
+
+.main-nav{
+    display:initial;
+}
+
+.less-nav{
+    display:none;
+}
+
+.less-overlay{
+    position:fixed;
+    display:none;
+    width:100%;
+    height:100%;
+    top:0;
+    left:250px;
+    right:0;
+    bottom:0;
+    background-color:rgba(0,0,0,0.5);
+    z-index:2;
+}
+
+
+.less-animate-opacity{animation:opac 0.8s}@keyframes opac{from{opacity:0} to{opacity:1}}
+
+
+
+
+
+
+#navbar a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 15px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+#navbar a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.fa-search{
+    height:2.68rem;
+}
+
+</style>
+</head>
+<body>
+
+
+<div class="super_container">
+
+	<!-- Header -->
+<div class="less-nav">
+    <div style="position:fixed;display:block;top:0px;left:50px;background:#252525;z-index:9999;" id="horizlogo">
+        <a href="#"><img src="{% static 'img/saree_house_logo_horiz_4.png' %}" alt=""></a>
+    </div>
+
+
+
+
+    <div id="navbar" style="transition: top 0.3s;position:fixed;display:block;top:50px;background:#252525;z-index:9999;width:100%;">
+        <form role="search" class="autocomplete"  autocomplete="off"  action="{% url 'cart:search' %}" style="">
+            <input id="myInput_1" type="text" placeholder="Search by category.." name="q" style="width:90%;" >
+            <input type="submit" value="&#xf002;" class="fa fa-search" style="width:10%;background-color:#FFD700;float:right;margin-top:7.4px;">
+        </form>
+    <!--  <a href="#home">Home</a>-->
+    <!--  <a href="#news">News</a>-->
+    <!--  <a href="#contact">Contact</a>-->
+    </div>
+    <div id="uppersearch" style="position:fixed;text-align:center;top:-50px;height:50px;z-index:10000;left:15%;right:18%;transition: top 0.3s;">
+        <form role="search" class="autocomplete"  autocomplete="off"  action="{% url 'cart:search' %}">
+            <input id="myInput_2" type="text" placeholder="Search by category.." name="q" style="width:90%;" >
+            <input type="submit" value="&#xf002;" class="fa fa-search" style="width:10%;background-color:#FFD700;float:right;margin-top:7.4px;">
+        </form>
+    </div>
+</div>
+
+	<header>
+        <div class="main-nav">
+            <div class="nav-item">
+                <nav class="nav-menu mobile-menu" style="width:100%;">
+                    <ul style="width:100%;">
+                        <li><a href="{% url 'cart:item-list' %}">Home</a></li>
+                        <li><a>Collection</a>
+                            <ul class="dropdown">
+                                <li><a href="{% url 'cart:Allproducts' %}">All Products</a></li>
+                                {% for a,category in categories %}
+                                <li><a href="{% url 'cart:category' category|slugify %}">{{ category }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+
+                        <li>
+                            <form role="search" class="autocomplete" autocomplete="off"  action="{% url 'cart:search' %}">
+                                <input id="myInput_3" type="text" placeholder="Search by category.." name="q">
+                                <input type="submit" value="&#xf002;" class="fa fa-search" style="width:3rem;background-color:#FFD700;margin-top:7px;">
+                            </form>
+                        </li>
+                        <li><a href="{% url 'cart:contact' %}" class="cont">Contact</a></li>
+                        {% if request.user.is_authenticated %}
+                        <li style="text-align:center;width:22%;padding-left:0px;padding-right:0px;"><a style="font-weight: normal;word-wrap: break-word;">Hello {{request.user.username}}</a>
+                            <ul class="dropdown" style="left:17%;">
+                                <li><a href="{% url 'cart:order-summary' %}">Your cart</a></li>
+                                <li><a href="{% url 'cart:order_tracking' %}">Active Orders</a></li>
+                                <li><a href="{% url 'account_logout' %}">Logout</a></li>
+                            </ul>
+                        </li>
+                        <li style="width:100px;float:right;">
+                            <span class="badge red z-depth-1 mr-1 " style="position:relative;left:18%;top:20px;bottom:15px;border-radius:2px;float:left;">{{ request.user|cart_item_count }}</span>
+                            <a href="{% url 'cart:order-summary' %}" class="fa" style="left:20%;font-size:24px;top:20px;padding-left:45px;">&#xf07a</a>
+                        </li>
+                        {% else %}
+                        <li><a style="padding-left:91px;padding-right:91px">Login/Signup</a>
+                            <ul class="dropdown">
+                                <li><a href="{% url 'account_signup' %}">New Customer(Sign up)</a></li>
+                                <li><a href="{% url 'account_login' %}">Login</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="" class="fa" style="font-size:24px;">&#xf07a;</a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </nav>
+
+
+
+<!--                <div id="mobile-menu-wrap"></div>-->
+
+
+
+
+            </div>
+        </div>
+
+
+
+
+
+        <div class="less-nav">
+
+
+                        <div style="position:fixed;top:0px;width:100%;background:#252525;height:50px;z-index:999;"></div>
+
+
+                        {% if request.user.is_authenticated %}
+                            <a href="{% url 'cart:order-summary' %}" style="position:fixed;width:65px;height:50px;box-sizing:border-box;cursor:pointer;background:#252525;top:0px;right:0px;z-index:9999;"></a>
+                            <span class="badge red z-depth-1 mr-1" style="position:fixed;right:33px;height:3%;border-radius:2px;top:14px;z-index:1000000;background: #252525;">{{ request.user|cart_item_count }}</span>
+                            <a href="{% url 'cart:order-summary' %}" class="fa" style="position:fixed;font-size:24px;color:#FFFFFF;right:10px;top:9px;z-index:1000000;">&#xf07a</a>
+
+                        {% else %}
+                            <div style="position:fixed;width:50px;height:50px;box-sizing:border-box;cursor:pointer;background:#252525;top:0px;right:0px;z-index:9999;"></div>
+                            <a href="{% url 'account_login' %}" class="fa" style="position:fixed;font-size:24px;color:#FFFFFF;right:10px;top:9px;z-index:1000000;">&#xf07a;</a>
+
+                        {% endif %}
+
+
+
+
+
+
+
+            <div class="nav-item">
+                <nav class="nav-menu mobile-menu">
+                    <ul>
+                        <li>
+                            <div class="sidebar" id="sidebar">
+                            <ul>
+                                {% if request.user.is_authenticated %}
+                                <li>
+                                <div class="tabs">
+                                  <div class="tab">
+                                    <input type="checkbox" id="chck3" style="opacity:0;">
+                                      <label class="tab-label" for="chck3" style="text-transform: uppercase;font-style: italic;font-weight:normal;color:#DCDCDC;">Hello {{request.user.username}}</label>
+                                      <div class="tab-content">
+<!--                                <a style="font-weight: normal;word-wrap: break-word;border-right:none;">Hello {{request.user.username}}</a>-->
+                                        <ul>
+                                            <li style="width:100%;"><a href="{% url 'cart:order-summary' %}" style="border-right:none;font-family:Lato,sans-serif;">Your cart</a></li>
+                                            <li style="width:100%;"><a href="{% url 'cart:order_tracking' %}" style="border-right:none;font-family:Lato,sans-serif;">Active Orders</a></li>
+                                            <li style="width:100%;"><a href="{% url 'account_logout' %}" style="border-right:none;font-family:Lato,sans-serif;">Logout</a></li>
+                                        </ul>
+                                      </div>
+                                  </div>
+                                </div>
+                                </li>
+                                {% else %}
+                                <li>
+                                <div class="tabs">
+                                  <div class="tab">
+                                    <input type="checkbox" id="chck4" style="opacity:0;">
+                                      <label class="tab-label" for="chck4" style="text-transform: uppercase;font-style: italic;font-weight:normal;">Login/Signup</label>
+                                      <div class="tab-content">
+                                          <ul>
+                                            <li style="width:100%;"><a href="{% url 'account_signup' %}" style="border-right:none;font-family:Lato,sans-serif;">New Customer(Sign up)</a></li>
+                                            <li style="width:100%;"><a href="{% url 'account_login' %}" style="border-right:none;font-family:Lato,sans-serif;">Login</a></li>
+                                        </ul>
+                                      </div>
+                                  </div>
+                                </div>
+                                </li>
+
+                                {% endif %}
+                                <li style="width:100%;"><a href="{% url 'cart:item-list' %}" style="border-right:none;padding-left:15px;">Home</a></li>
+                                <li>
+                                <div class="tabs">
+                                  <div class="tab">
+                                    <input type="checkbox" id="chck1" style="opacity:0;">
+                                    <label class="tab-label" for="chck1" style="text-transform: uppercase;">Collection</label>
+                                    <div class="tab-content">
+                                    <ul>
+                                        <li style="width:100%;"><a href="{% url 'cart:Allproducts' %}" style="border-right:none;font-family:Lato,sans-serif;">All Products</a></li>
+                                        {% for a,category in categories %}
+                                        <li style="width:100%;"><a href="{% url 'cart:category' category|slugify %}" style="border-right:none;font-family:Lato,sans-serif;">{{ category }}</a></li>
+                                        {% endfor %}
+                                    </ul>
+                                    </div>
+                                  </div>
+                                </div>
+                                </li>
+<!--                                                                <ul class="dropdown">-->
+<!--                                        <li><a href="{% url 'cart:Allproducts' %}">All Products</a></li>-->
+<!--                                        {% for a,category in category_list %}-->
+<!--                                        <li><a href="{% url 'cart:category' category|slugify %}">{{ category }}</a></li>-->
+<!--                                        {% endfor %}-->
+<!--                                    </ul>-->
+<!--                                </li>-->
+                                <li style="width:100%;"><a href="{% url 'cart:contact' %}" style="border-right:none;padding-left:15px;" class="cont">Contact</a></li>
+
+
+
+
+                            </ul>
+
+                            <div class="less-overlay less-animate-opacity" onclick="overlay_close()" style="cursor:pointer" id="myOverlay"></div>
+
+                            <button class="sidebarBtn" onclick="overlay_open()" id="sidebarBtn"><span></span></button>
+                            </div>
+                        </li>
+
+                        <li style="padding-top:70px;">
+
+                        </li>
+
+                    </ul>
+                </nav>
+<!--                <div id="mobile-menu-wrap"></div>-->
+            </div>
+        </div>
+    </header>
+    <!-- Header End -->
+
+
+
+{% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    {% endfor %}
+{% endif %}
+
+<div class="container">
+    {% block content %}
+    {% endblock %}
+    {% block extra_body %}
+    {% endblock %}
+</div>
+<div class="container" style="padding:0px;margin:0px;">
+    {% block products %}
+    {% endblock %}
+</div>
+
+	<!-- Footer -->
+
+<footer class="footer-section" style="">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="footer-left">
+                    <div class="footer-logo">
+                        <a href="#"><img src="{% static 'img/saree_house_logo.png' %}" alt=""></a>
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="footer-left">
+                    <div class="footer-widget">
+                        <h5>Information</h5>
+                        <ul>
+                            <li>Address: OU Colony, Shaikpet, Hyderabad, Telangana 500008</li>
+                            <li>Phone: 9963979765</li>
+                            <li>Email: sridevi.talluri08@gmail.com</li>
+                        </ul>
+                        <div class="footer-social">
+<!--                        <a href="#"><i class="fa fa-facebook"></i></a>-->
+                        <a href="https://wa.me/919963979765" ><i class="fa fa-whatsapp" style="font-size:20px;"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2 ">
+                <div class="footer-widget">
+                    <h5>Information</h5>
+                    <ul>
+                        <li><a href="{% url 'cart:about_us' %}">About Us</a></li>
+                        <li><a href="#">Checkout our Tailoring</a></li>
+                        <li><a href="{% url 'cart:contact' %}">Contact Us</a></li>
+                        <li><a href="{% url 'cart:faqs' %}">FAQs</a></li>
+
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="footer-widget">
+                    <h5>My Account</h5>
+                    <ul>
+<!--                        <li><a href="#">My Account details</a></li>-->
+                        <li><a href="{% url 'cart:order-summary' %}">Shopping Cart</a></li>
+                        {% if request.user.is_authenticated %}
+                        <li><a href="{% url 'cart:order_tracking' %}">Active Orders</a></li>
+                        <li><a href="{% url 'account_logout' %}">Logout</a></li>
+                        {% else %}
+                        <li><a href="{% url 'account_login' %}">Login</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="newslatter-item">
+                    <h5>Updates</h5>
+                    <p>Get E-mail updates about our latest sarees/dresses and special offers.</p>
+                    <form class="subscribe-form" action="{% url 'emailupdates:signingup' %}" name="hello">
+                        <button type="submit" style="position:relative;">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="copyright-reserved">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="copyright-text">
+                        © Copyright 2020 SareeHouse
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/jquery-ui.min.js' %}"></script>
+<script src="{% static 'js/jquery.countdown.min.js' %}"></script>
+<script src="{% static 'js/jquery.nice-select.min.js' %}"></script>
+<script src="{% static 'js/jquery.zoom.min.js' %}"></script>
+<script src="{% static 'js/jquery.dd.min.js' %}"></script>
+<script src="{% static 'js/jquery.slicknav.js' %}"></script>
+<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
+
+<!-- JS FOR PRODUCTVIEW BEGIN -->
+  <script type="text/javascript" src="{% static 'js_mdbootstrap/jquery-3.4.1.min.js' %}"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="{% static 'js_mdbootstrap/popper.min.js' %}"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="{% static 'js_mdbootstrap/bootstrap.min.js' %}"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="{% static 'js_mdbootstrap/mdb.min.js' %}"></script>
+  <!-- Initializations -->
+  <script type="text/javascript">
+    // Animations initialization
+    new WOW().init();
+
+  </script>
+
+
+<script>
+    var prevScrollpos = window.pageYOffset;
+    window.onscroll = function() {
+    var currentScrollPos = window.pageYOffset;
+      if (currentScrollPos < 80) {
+        document.getElementById("navbar").style.top = "50px";
+        document.getElementById("uppersearch").style.top = "-50px";
+        document.getElementById("horizlogo").style.top = "0px";
+
+      } else {
+        document.getElementById("navbar").style.top = "-50px";
+        document.getElementById("uppersearch").style.top = "0px";
+        document.getElementById("horizlogo").style.top = "-50px";
+      }
+      prevScrollpos = currentScrollPos;
+    }
+
+</script>
+
+<script type="text/javascript">
+
+
+
+$(document).ready(function() {
+
+  $('#myInput_1').keydown(function(event) {
+    // enter has keyCode = 13, change it if you want to use another button
+    if (event.keyCode == 13) {
+      this.form.submit();
+      return false;
+    }
+  });
+
+});
+
+$(document).ready(function() {
+
+  $('#myInput_2').keydown(function(event) {
+    // enter has keyCode = 13, change it if you want to use another button
+    if (event.keyCode == 13) {
+      this.form.submit();
+      return false;
+    }
+  });
+
+});
+
+$(document).ready(function() {
+
+  $('#myInput_3').keydown(function(event) {
+    // enter has keyCode = 13, change it if you want to use another button
+    if (event.keyCode == 13) {
+      this.form.submit();
+      return false;
+    }
+  });
+
+});
+
+
+$(document).ready(function(){
+	$('.sidebarBtn').click(function(){
+		$('.sidebar').toggleClass('active');
+		$('.sidebarBtn').toggleClass('toggle');
+	});
+});
+
+function overlay_open() {
+
+  document.getElementById("myOverlay").style.display = "block";
+}
+
+function overlay_close() {
+  document.getElementById("sidebar").className = "sidebar";
+  document.getElementById("sidebarBtn").className = "sidebarBtn";
+
+  document.getElementById("myOverlay").style.display = "none";
+}
+</script>
+
+
+<!-- JS FOR PRODUCTVIEW END -->
+    {% block extra_scripts %}
+    {% endblock extra_scripts %}
+
+</div>
+</body>
+</html>
+
+
+
+

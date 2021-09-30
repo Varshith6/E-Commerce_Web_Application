@@ -1,0 +1,51 @@
+
+
+<header>
+		<div class="nav-item">
+            <nav class="nav-menu mobile-menu">
+                <ul>
+                    <li><a href="{% url 'cart:item-list' %}">Home</a></li>
+                    <li><a href="product-page.html">Collection</a>
+                        <ul class="dropdown">
+                            <li><a href="{% url 'cart:Allproducts' %}">All Products</a></li>
+                            {% for item in Item %}
+                            <li><a href="#">{{ item.title }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+
+                    <li>
+                        <form action="./search/" method="get" class="autocomplete">
+                            <input id="myInput" type="text" placeholder="Search sarees..">
+                            <input type="submit" value="&#xf002;" class="fa fa-search">
+                        </form>
+                    </li>
+                    <li><a href="./contact.html" class="cont">Contact</a></li>
+                    {% if request.user.is_authenticated %}
+                    <li style="width:296px;text-align:center;"><a style="font-weight: normal;padding-left:10px;padding-right:10px;word-wrap: break-word;">Hello {{request.user.username}}</a>
+                        <ul class="dropdown" style="left:17%;">
+                            <li><a href="account1.html">Your cart</a></li>
+                            <li><a href="{% url 'account_logout' %}">Logout</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <span class="badge red z-depth-1 mr-1" style="position:absolute;top:20px;bottom:15px;left:20px;border-radius:2px;">{{ request.user|cart_item_count }}</span>
+                        <a href="{% url 'cart:order-summary' %}" class="fa" style="font-size:24px;">&#xf07a;</a>
+                    </li>
+                    {% else %}
+                    <li><a style="padding-left:95px;padding-right:95px">Login/Signup</a>
+                        <ul class="dropdown">
+                            <li><a href="{% url 'account_signup' %}">New Customer(Sign up)</a></li>
+                            <li><a href="{% url 'account_login' %}">Login</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="" class="fa" style="font-size:24px;">&#xf07a;</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </nav>
+            <div id="mobile-menu-wrap"></div>
+        </div>
+    </header>
+    <!-- Header End -->

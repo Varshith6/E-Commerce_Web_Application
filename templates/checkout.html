@@ -1,0 +1,286 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+<html lang="en">
+{% block content %}
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Checkout Page</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="{% static 'css_mdbootstrap/bootstrap.min.css' %}" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="{% static 'css_mdbootstrap/mdb.min.css' %}" rel="stylesheet">
+  <!-- Your custom styles (optional) -->
+  <link href="{% static 'css_mdbootstrap/style.min.css' %}" rel="stylesheet">
+
+</head>
+
+<body class="grey lighten-3">
+
+
+
+  <!--Main layout-->
+  <main>
+    <div class="container wow fadeIn">
+      <!-- Heading -->
+      <h2 class="my-5 h2 text-center">Checkout form</h2>
+      <!--Grid row-->
+      <div class="row">
+        <!--Grid column-->
+        <div class="col-md-8 mb-4">
+          <!--Card-->
+          <div class="card">
+            <!--Card content-->
+            <form method="POST" class="card-body">
+            {% csrf_token %}
+            <h3>Personal details</h3>
+
+             <div class="row">
+                <div class="col-lg-5 col-md-12 mb-4">
+                  <label for="Firstname">First name</label>
+                  <input type="text" placeholder="First name" id="firstname" name="firstname" class="form-control" required>
+                </div>
+
+                <div class="col-lg-5 col-md-12 mb-4">
+                  <label for="Lastname">Last name</label>
+                  <input type="text" placeholder="Last name" id="lastname" name="lastname" class="form-control" required>
+                </div>
+             </div>
+             <div class="row">
+                <div class="col-lg-5 col-md-12 mb-4">
+                  <label for="Mobile">Mobile no.</label>
+                  <input type="text" placeholder="Mobile" id="mobile" name="mobile" class="form-control" required>
+                </div>
+                <div class="col-lg-5 col-md-12 mb-4">
+                  <label for="Altmobile">Alternate Mobile no.</label>
+                  <input type="text" placeholder="Alt. Mobile" id="altmobile" name="altmobile" class="form-control">
+                </div>
+             </div>
+             <div class="row">
+                <div class="col-lg-5 col-md-12 mb-4">
+                  <label for="email">Email</label>
+                  <input type="email" placeholder="Email" id="email" name="email" class="form-control" required>
+                </div>
+             </div>
+
+            <hr>
+
+            <h3>Shipping Address</h3>
+            <div class="hideable_shipping_form">
+              <!--address-->
+              <div class="md-form mb-5">
+                <input type="text" placeholder="Street/Colony Address" id="shipping_address" name="shipping_address" class="form-control" required>
+                <label for="shipping_address" class="">Address Line 1</label>
+              </div>
+              <!--address-2-->
+              <div class="md-form mb-5">
+                <input type="text" placeholder="Apartment/House Address" id="shipping_address2" name="shipping_address2" class="form-control" required>
+                <label for="shipping_address2" class="">Address Line 2</label>
+              </div>
+              <div class="row">
+                <div class="col-lg-4 col-md-12 mb-4">
+                  <label for="country">City</label>
+                  {{ form.City }}
+                </div>
+                <div class="col-lg-4 col-md-12 mb-4">
+                  <label for="country">State</label>
+                  {{ form.State }}
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                  <label for="shipping_Pincode">Pincode</label>
+                  <input type="text" placeholder="Pin" id="shipping_Pincode" name="shipping_Pincode" class="form-control" required>
+                  <div class="invalid-feedback">
+                    Pincode required.
+                  </div>
+                </div>
+              </div>
+              <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" name="same_billing_address" id="same_billing_address">
+                <label class="custom-control-label" for="same_billing_address"><b>Billing address is the same as my shipping address</b></label>
+              </div>
+              <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" name="set_default_shipping" id="set_default_shipping">
+                <label class="custom-control-label" for="set_default_shipping">Save this shipping address for next time</label>
+              </div>
+            </div>
+              {% if default_shipping_address %}
+              <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" name="use_default_shipping" id="use_default_shipping">
+                <label class="custom-control-label" for="use_default_shipping">Use saved Shipping address: {{ default_shipping_address.street_address|truncatechars:10 }}</label>
+              </div>
+              {% endif %}
+              <hr>
+
+
+
+            <h3>Billing Address</h3>
+            <div class="hideable_billing_form">
+              <!--address-->
+              <div class="md-form mb-5">
+               <input type="text" placeholder="Street/Colony Address" id="billing_address" name="billing_address" class="form-control">
+                <label for="billing_address" class="">Address</label>
+              </div>
+              <!--address-2-->
+              <div class="md-form mb-5">
+                <input type="text" placeholder="Apartment/House Address" id="billing_address2" name="billing_address2" class="form-control">
+                <label for="billing_address2" class="">Address 2 (optional)</label>
+              </div>
+              <div class="row">
+                <div class="col-lg-4 col-md-12 mb-4">
+                  <label for="country">City</label>
+                  {{ form.City }}
+                </div>
+                <div class="col-lg-4 col-md-12 mb-4">
+                  <label for="country">State</label>
+                  {{ form.State }}
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                  <label for="billing_Pincode">Pincode</label>
+                  <input type="text" placeholder="Pin" id="billing_Pincode" name="billing_Pincode" class="form-control">
+                  <div class="invalid-feedback">
+                    Pincode required.
+                  </div>
+                </div>
+              </div>
+               <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" name="set_default_billing" id="set_default_billing">
+                <label class="custom-control-label" for="set_default_billing">Save this billing address for next time</label>
+              </div>
+            </div>
+
+
+
+              {% if default_billing_address %}
+              <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" name="use_default_billing" id="use_default_billing">
+                <label class="custom-control-label" for="use_default_billing">Use saved Billing address: {{ default_billing_address.street_address|truncatechars:10 }}</label>
+              </div>
+              {% endif %}
+
+
+              <hr class="mb-4">
+              <button class="btn btn-primary btn-lg btn-block" type="submit">Proceed to Pay</button>
+
+            </form>
+
+          </div>
+          <!--/.Card-->
+
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-md-4 mb-4">
+
+          <!-- Heading -->
+          <h4 class="d-flex justify-content-between align-items-center mb-3">
+            <span class="text-muted">Your cart</span>
+            <span class="badge badge-secondary badge-pill">{{ order.items.count }}</span>
+          </h4>
+
+          <!-- Cart -->
+          <ul class="list-group mb-3 z-depth-1">
+            {% for item in order.items.all %}
+            <li class="list-group-item d-flex justify-content-between lh-condensed">
+              <div>
+                <h6 class="my-0"> {{ item.quantity }} x {{ item.item.title }} </h6>
+                <small class="text-muted">{{ item.item.description }}</small>
+              </div>
+              <span class="text-muted">&#8377<!--Comment to remove whitespace-->{{ item.get_final_price }}</span>
+            </li>
+            {% endfor %}
+            <li class="list-group-item d-flex justify-content-between lh-condensed">
+              <div>
+                <h6 class="my-0"> Delivery Charges</h6>
+              </div>
+              <span class="text-muted">&#8377<!--Comment to remove whitespace-->49</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between">
+              <span>Total (RS)</span>
+              <strong>&#8377<!--Comment to remove whitespace-->{{ totality }}</strong>
+            </li>
+          </ul>
+          <!-- Cart -->
+
+
+        </div>
+        <!--Grid column-->
+
+      </div>
+      <!--Grid row-->
+
+    </div>
+  </main>
+  <!--Main layout-->
+
+
+
+  <!-- SCRIPTS -->
+  <!-- JQuery -->
+  <script type="text/javascript" src="{% static 'js_mdbootstrap/jquery-3.4.1.min.js' %}"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="{% static 'js_mdbootstrap/popper.min.js' %}"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="{% static 'js_mdbootstrap/bootstrap.min.js' %}"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="{% static 'js_mdbootstrap/mdb.min.js' %}"></script>
+  <!-- Initializations -->
+  <script type="text/javascript">
+    // Animations initialization
+    new WOW().init();
+  </script>
+</body>
+{% endblock %}
+{% block extra_scripts %}
+<script>
+  var hideable_shipping_form = $('.hideable_shipping_form');
+  var hideable_billing_form = $('.hideable_billing_form');
+
+  var use_default_shipping = document.querySelector("input[name=use_default_shipping]");
+  var use_default_billing = document.querySelector("input[name=use_default_billing]");
+  var same_billing_shipping = document.querySelector("input[name=same_billing_address]");
+
+  use_default_shipping.addEventListener('change', function(){
+    if (this.checked) {
+      document.getElementById('shipping_address').value = "{{ default_shipping_address.street_address }}";
+      document.querySelector('#shipping_Pincode').value = "{{ default_shipping_address.Pincode }}";
+      document.querySelector('shipping_address2').value = "{{ default_shipping_address.apartment_address }}";
+
+    } else{
+      document.getElementById('shipping_address').value = "";
+      document.querySelector('#shipping_Pincode').value ="";
+      document.querySelector('shipping_address2').value ="";
+    }
+  })
+
+  use_default_billing.addEventListener('change', function(){
+    if (this.checked) {
+      document.getElementById('billing_address').value = "{{ default_billing_address.street_address }}";
+      document.querySelector('#billing_Pincode').value = "{{ default_billing_address.Pincode }}";
+      document.getElementById('billing_address2').value = "{{ default_billing_address.apartment_address }}";
+
+    } else{
+      document.getElementById('billing_address').value = "";
+      document.querySelector('#billing_Pincode').value = "";
+      document.getElementById('billing_address2').value = "";
+    }
+  })
+
+  same_billing_shipping.addEventListener('change', function(){
+    if (this.checked) {
+      hideable_billing_form.hide()
+      document.getElementById('billing_address').value = "";
+      document.querySelector('#billing_Pincode').value = "";
+      document.getElementById('billing_address2').value = "";
+      $("#use_default_billing"). prop("checked", false);
+
+    } else{
+      hideable_billing_form.show()
+    }
+  })
+
+</script>
+{% endblock extra_scripts %}

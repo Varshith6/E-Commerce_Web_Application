@@ -1,0 +1,1 @@
+You have unsubscribed from our website. You will no longer  recieve updates and news about our latest stocks and discounts. If you would like to subscribe again visit http://127.0.0.1:8000/emailupdates/signingup

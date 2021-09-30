@@ -1,0 +1,264 @@
+{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Material Design Bootstrap</title>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+  <!-- Bootstrap core CSS -->
+  <link href="{% static 'css_mdbootstrap/bootstrap.min.css' %}" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="{% static 'css_mdbootstrap/mdb.min.css' %}" rel="stylesheet">
+  <!-- Your custom styles (optional) -->
+  <link href="{% static 'css_mdbootstrap/style.min.css' %}" rel="stylesheet">
+
+</head>
+
+<body>
+
+
+{% block content %}
+  <link href="{% static 'css/sidebar.css' %}" rel="stylesheet">
+  <link href="{% static 'css_mdbootstrap/bootstrap.min.css' %}" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="{% static 'css_mdbootstrap/mdb.min.css' %}" rel="stylesheet">
+  <!-- Your custom styles (optional) -->
+  <link href="{% static 'css_mdbootstrap/style.min.css' %}" rel="stylesheet">
+<style>
+html,body{
+  width:100%;
+
+}
+
+b, strong {
+    font-weight: 700;
+
+}
+a.dark-grey-text:hover{
+  text-decoration:underline;
+}
+.column img {
+  opacity: 0.8;
+  float: left;
+  cursor: pointer;
+  border:0.5px solid black;
+  border-radius:3px;
+  border-color:#ADB1B8 #A2A6AC #8D9096
+}
+.column img:hover {
+  opacity: 1;
+  border:1px solid black;
+  outline: 0;
+  border-color: #e77600;
+  box-shadow: 0 0 3px 2px rgba(228,121,17,.5);
+}
+.column img:focus {
+  outline: 0;
+  border-color: #e77600;
+  box-shadow: 0 0 3px 2px rgba(228,121,17,.5);
+}
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+</style>
+  <!--Main layout-->
+  <main class="mt-5" >
+    <div class="container dark-grey-text mt-5">
+
+      <!--Grid row-->
+      <div class="row wow fadeIn">
+
+        <!--Grid column-->
+        <div class="col-md-6 mb-4">
+
+          {% if object.image_url %}
+          <img src="{{ item.image_url.url }}"  id="expandedImg" class="img-fluid">
+          {% else %}
+          <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/14.jpg" class="img-fluid" alt="">
+          {% endif %}
+
+          <div class="row">
+            {% if object.image_url %}
+            <div class="column" style="width: 25%;padding: 10px;">
+              <img src="{{ item.image_url.url }}" alt="img1" style="width:100%;" onclick="tabgallery(this);">
+            </div>
+            {% endif %}
+            {% if object.img2 %}
+            <div class="column" style="width: 25%;padding: 10px;">
+              <img src="{{ item.img2.url }}" alt="img2" style="width:100%;" onclick="tabgallery(this);">
+            </div>
+            {% endif %}
+            {% if object.img3 %}
+            <div class="column" style="width: 25%;padding: 10px;">
+              <img src="{{ item.img3.url }}" alt="img3" style="width:100%;" onclick="tabgallery(this);">
+            </div>
+            {% endif %}
+          </div>
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-md-6 mb-4">
+
+          <!--Content-->
+          <div class="p-4">
+
+            <div class="mb-3">
+              <a href="">
+                  <h3>{{ object.title }}</h3>
+                <span class="badge purple mr-1">{{ object.get_category_display }}</span>
+              </a>
+            </div>
+
+            <p class="lead">
+              {% if object.discount_price %}
+               <span class="mr-1">
+                <del>&#8377<!--Comment to remove whitespace-->{{ object.price }}</del>
+              </span>
+              <span>&#8377<!--Comment to remove whitespace-->{{ object.discount_price }}</span>
+              {% else %}
+              <span>&#8377<!--Comment to remove whitespace-->{{ object.price }}</span>
+              {% endif %}
+            </p>
+
+            <p class="lead font-weight-bold">Description</p>
+
+            <p>{{ object.description }}</p>
+
+            {% if object.size %}
+            <p><b>Size:</b>{{ object.size }}</p>
+            {% endif %}
+
+<!--            <form class="d-flex justify-content-left">-->
+<!--              &lt;!&ndash; Default input &ndash;&gt;-->
+<!--              <input type="number" value="1" aria-label="Search" class="form-control" style="width: 100px">-->
+<!--              <button class="btn btn-primary btn-md my-0 p" type="submit">Add to cart-->
+<!--                <i class="fas fa-shopping-cart ml-1"></i>-->
+<!--              </button>-->
+<!--            </form>-->
+              {% if a %}
+              <a href="{{ object.get_add_to_cart_url }}" style="float:left;" class="btn btn-primary btn-md my-0 p">Add to cart
+                  <i class="fas fa-shopping-cart ml-1"></i>
+              </a>
+              <a href="{{ object.get_remove_from_cart_url }}" style="float:left;" class="btn btn-danger btn-md my-0 p">Remove from cart
+                  <i class="fas fa-shopping-cart ml-1"></i>
+              </a>
+              {% else %}
+              <p style="color:red;">Sorry, this product is currently out of stock</p>
+              {% endif %}
+
+          </div>
+          <!--Content-->
+
+        </div>
+        <!--Grid column-->
+
+      </div>
+      <!--Grid row-->
+
+      <hr>
+
+      <!--Grid row-->
+      <div class="row d-flex justify-content-center wow fadeIn">
+
+        <!--Grid column-->
+        <div class="col-md-6 text-center">
+
+          <h4 class="my-4 h4"><a href="{% url 'cart:category' object.get_category_display|slugify %}">Similar Products</a></h4>
+
+          <p>Check out the products similar to the one you have viewed. <b>SareeHouse</b> provides a wide variety of collections. See below!! </p>
+
+        </div>
+        <!--Grid column-->
+
+      </div>
+      <!--Grid row-->
+
+      <main>
+        <div class="container">
+            <!--Section: Products v.3-->
+          <section class="text-center mb-4">
+            <!--Grid row-->
+            <div class="row wow fadeIn">
+              {% for item in similar_products %}
+              <!--Grid column-->
+<!--              <div class="col-lg-4 col-md-12 mb-4">-->
+              <div class="col-lg-3 col-md-6 mb-4">
+                <div class="card">
+                  <div class="view overlay">
+                    {% if item.image_url %}
+                    <img src="{{ item.image_url.url }}" class="card-img-top" alt="">
+                    {% else %}
+                    <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/12.jpg" class="card-img-top" alt="">
+                    {% endif %}
+                    <a href="{{ item.get_absolute_url }}">
+                      <div class="mask rgba-white-slight"></div>
+                    </a>
+                  </div>
+
+                  <!--Card content-->
+                  <div class="card-body text-center">
+                    <!--Category & Title-->
+                    <a href="" class="grey-text">
+                      <h5>{{ item.get_category_display }}</h5>
+                    </a>
+                    <h5>
+                      <strong>
+                        <a href="{{ item.get_absolute_url }}" class="dark-grey-text" >{{ item.title }}
+                          <span class="badge badge-pill {{ item.get_label_display }}-color">NEW</span>
+                        </a>
+                      </strong>
+                    </h5>
+
+                    <h4 class="font-weight-bold blue-text">
+                      <strong>
+                          {% if item.discount_price %}
+                          &#8377<!--Comment to remove whitespace-->{{ item.discount_price }}
+                          {% else %}
+                          &#8377<!--Comment to remove whitespace--->{{ item.price }}
+                          {% endif %}
+                      </strong>
+                    </h4>
+
+                  </div>
+                  <!--Card content-->
+                </div>
+
+              </div>
+              <!--Grid column-->
+              {% endfor %}
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+  </main>
+  <!--Main layout-->
+{% endblock %}
+
+
+  <!-- SCRIPTS -->
+  <!-- JQuery -->
+  <script type="text/javascript" src="{% static 'js_mdbootstrap/jquery-3.4.1.min.js' %}"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="{% static 'js_mdbootstrap/popper.min.js' %}"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="{% static 'js_mdbootstrap/bootstrap.min.js' %}"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="{% static 'js_mdbootstrap/mdb.min.js' %}"></script>
+  <!-- Initializations -->
+  <script type="text/javascript">
+    // Animations initialization
+    new WOW().init();
+  </script>
+</body>
+
+</html>

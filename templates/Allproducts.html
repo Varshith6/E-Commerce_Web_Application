@@ -1,0 +1,179 @@
+{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All Products</title>
+
+<style>
+@media only screen and (max-width: 767px){
+    .col-lg-3{
+        width:50%;
+        height:auto;
+    }
+
+}
+
+
+</style>
+
+</head>
+<body>
+{% block content %}
+  <link href="{% static 'css/sidebar.css' %}" rel="stylesheet">
+  <link href="{% static 'css_mdbootstrap/bootstrap.min.css' %}" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="{% static 'css_mdbootstrap/mdb.min.css' %}" rel="stylesheet">
+  <!-- Your custom styles (optional) -->
+  <link href="{% static 'css_mdbootstrap/style.min.css' %}" rel="stylesheet">
+  <!-- Makes product cards look better -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<style>
+.fa-search{
+    height:4.22rem;
+}
+</style>
+
+
+
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="#" style="padding-bottom:40px;color:white;"><b>CATEGORIES</b></a>
+  {% for category,a in all_categories %}
+  <ul>
+    <li><a href="{% url 'cart:category' category|slugify %}" style="padding-bottom:0px;padding-top:0px;">{{ category }}</a></li>
+  </ul>
+  {% endfor %}
+</div>
+
+<div class="row">
+<!-- Use any element to open the sidenav -->
+<span onclick="openNav()" class="sidebutton">&#9776;Categories</span>
+
+
+<div id="main">
+  <main style="">
+    <div class="container">
+        <h1 style="text-align:center;">Our Products</h1>
+      <!--Section: Products v.3-->
+      <section class="text-center mb-4">
+
+
+        <div class="row wow fadeIn">
+
+          {% for item in object_list %}
+          <div class="col-lg-3 col-md-6 mb-4">
+
+            <!--Card-->
+            <div class="card">
+
+              <!--Card image-->
+              <div class="view overlay">
+                {% if item.image_url %}
+                <img src="{{ item.image_url.url }}" class="card-img-top" alt="">
+                {% else %}
+                <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/12.jpg" class="card-img-top" alt="">
+                {% endif %}
+                <a href="{{ item.get_absolute_url }}">
+                  <div class="mask rgba-white-slight"></div>
+                </a>
+              </div>
+              <!--Card image-->
+
+              <!--Card content-->
+              <div class="card-body text-center">
+                <!--Category & Title-->
+                <a href="" class="grey-text">
+                  <h5>{{ item.get_category_display }}</h5>
+                </a>
+                <h5>
+                  <strong>
+                    <a href="{{ item.get_absolute_url }}" class="dark-grey-text">{{ item.title }}
+                      <span class="badge badge-pill {{ item.get_label_display }}-color">NEW</span>
+                    </a>
+                  </strong>
+                </h5>
+
+                <h4 class="font-weight-bold blue-text">
+                  <strong>
+                      {% if item.discount_price %}
+                      {{ item.discount_price }}
+                      {% else %}
+                      {{ item.price }}
+                      {% endif %}
+                  </strong>
+                </h4>
+
+              </div>
+              <!--Card content-->
+
+            </div>
+            <!--Card-->
+
+          </div>
+          {% endfor %}
+        </div>
+        <!--Grid row-->
+
+
+
+      </section>
+      <!-- Pagination -->
+      {% if is_paginated %}
+      <nav class="d-flex justify-content-center wow fadeIn">
+        <ul class="pagination pg-blue">
+
+          <!--Arrow left-->
+          {% if page_obj.has_previous %}
+          <li class="page-item">
+            <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+              <span class="sr-only">Previous</span>
+            </a>
+          </li>
+          {% endif %}
+
+          <li class="page-item active">
+            <a class="page-link" href="?page={{ page_obj.number }}">{{ page_obj.number }}
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+
+          <!--Arrow right-->
+          {% if page_obj.has_next %}
+          <li class="page-item">
+            <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+              <span class="sr-only">Next</span>
+            </a>
+          </li>
+          {% endif %}
+        </ul>
+      </nav>
+      {% endif %}
+      <!--Pagination-->
+
+    </div>
+  </main>
+</div>
+</div>
+
+<script>
+
+  function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+    document.getElementById("main").style.marginLeft = "0";
+  }
+
+
+  function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+    document.getElementById("main").style.marginLeft = "0";
+  }
+</script>
+{% endblock %}
+
+</body>
+</html>

@@ -1,0 +1,138 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+<body>
+{% block content %}
+
+  <link href="{% static 'css/sidebar.css' %}" rel="stylesheet">
+  <link href="{% static 'css_mdbootstrap/bootstrap.min.css' %}" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="{% static 'css_mdbootstrap/mdb.min.css' %}" rel="stylesheet">
+  <!-- Your custom styles (optional) -->
+  <link href="{% static 'css_mdbootstrap/style.min.css' %}" rel="stylesheet">
+  <!-- Makes product cards look better -->
+
+<!--Section: Contact v.2-->
+
+<div style="padding-bottom:50px;" >
+
+<section class="mb-4">
+
+    <!--Section heading-->
+    <h2 class="h1-responsive font-weight-bold text-center my-4" style="font-family:Times New Roman;font-size:70px;">Contact us</h2>
+    <!--Section description-->
+    <p class="text-center w-responsive mx-auto mb-5" >Do you have any questions? You contact us directly. Our team is ready to help you.</p>
+
+    <div class="row">
+
+        <!--Grid column-->
+        <div class="col-md-9 mb-md-0 mb-5">
+            <form id="contact-form" name="contact-form" action="" method="POST">
+                {% csrf_token %}
+                <!--Grid row-->
+                <div class="row">
+
+                    <!--Grid column-->
+                    <div class="col-md-6">
+                        <div class="md-form mb-0">
+                            <input type="text" id="name" name="name" class="form-control" required>
+                            <label for="name" class="">Your name</label>
+                        </div>
+                    </div>
+                    <!--Grid column-->
+
+                    <!--Grid column-->
+                    <div class="col-md-6">
+                        <div class="md-form mb-0">
+                            <input type="text" id="email" name="email" class="form-control">
+                            <label for="email" class="">Your email</label>
+                        </div>
+                    </div>
+                    <!--Grid column-->
+
+                    <!--Grid column-->
+                    <div class="col-md-6">
+                        <div class="md-form mb-0">
+                            <input type="text" id="phone" name="phone" class="form-control">
+                            <label for="phone" class="">Mobile No.</label>
+                        </div>
+                    </div>
+                    <!--Grid column-->
+
+                </div>
+                <!--Grid row-->
+
+                <!--Grid row-->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="md-form mb-0">
+                            <input type="text" id="subject" name="subject" class="form-control">
+                            <label for="subject" class="">Subject/Txnid</label>
+                        </div>
+                    </div>
+                </div>
+                <!--Grid row-->
+
+                <!--Grid row-->
+                <div class="row">
+
+                    <!--Grid column-->
+                    <div class="col-md-12">
+
+                        <div class="md-form">
+                            <textarea type="text" id="message" name="message" rows="2" class="form-control md-textarea"></textarea>
+                            <label for="message">Your message</label>
+                        </div>
+
+                    </div>
+                </div>
+                <!--Grid row-->
+
+            </form>
+
+            <div class="text-center text-md-left">
+                <a class="btn btn-primary" onclick="document.getElementById('contact-form').submit();">Send</a>
+            </div>
+            <div class="status"></div>
+        </div>
+        <!--Grid column-->
+
+
+
+    </div>
+
+</section>
+</div>
+
+<div class="container" style="background-color:#FFF8DC;width:100%;">
+    <div class="row">
+        <div class="col-md-3 text-center" style="position:relative;bottom:-10px;margin:auto;">
+            <ul class="list-unstyled mb-0">
+                <li><i class="fas fa-map-marker-alt fa-2x"></i>
+                    <p>OU Colony,Shaikpet,Manikonda</p>
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-3 text-center" style="position:relative;bottom:0px;margin:auto;">
+            <ul class="list-unstyled mb-0">
+                <li><i class="fas fa-phone mt-4 fa-2x"></i>
+                    <p>9963979765</p>
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-3 text-center" style="position:relative;bottom:0px;margin:auto;">
+            <ul class="list-unstyled mb-0">
+                <li><i class="fas fa-envelope mt-4 fa-2x"></i>
+                    <p>sridevi.talluri08@gmail.com</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!--Section: Contact v.2-->
+
+
+
+{% endblock %}
+</body>

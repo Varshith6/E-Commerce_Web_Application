@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+  <!-- Bootstrap core CSS -->
+  <link href="{% static 'css_mdbootstrap/bootstrap.min.css' %}" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="{% static 'css_mdbootstrap/mdb.min.css' %}" rel="stylesheet">
+  <!-- Your custom styles (optional) -->
+  <link href="{% static 'css_mdbootstrap/style.min.css' %}" rel="stylesheet">
+
+<style>
+@media only screen and (min-width: 768px){
+    .md-form{
+        left:34%;
+    }
+}
+</style>
+
+<body>
+    <div class="container" style="padding-top:3%;width:100%;">
+        <form method="POST" class="card-body" style="border:1px solid #c3c3c3;">
+            <h3 class="text-center">Unsubscribe from Sareehouse updates</h3>
+            {% csrf_token %}
+            <div class="md-form">
+                {{ form }}
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit">Unsubscribe</button>
+                </span>
+            </div>
+        </form>
+    </div>
+    <p style="text-align:center;">If you have not subscribed yet and would like to recieve news and updates from SareeHouse,
+        please <a href="{% url 'emailupdates:signingup' %}">click here</a></p>
+</body>
+{% endblock %}

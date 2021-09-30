@@ -1,0 +1,133 @@
+/* The side navigation menu */
+.sidenav {
+  height: 100%; /* 100% Full-height */
+  width: 0; /* 0 width - change this with JavaScript */
+  position: absolute; /* Stay in place */
+  z-index: 1; /* Stay on top */
+  top: 10; /* Stay at the top */
+  left: 0;
+  background-color: #111; /* Black*/
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 60px; /* Place content 60px from the top */
+  transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+}
+
+/* The navigation menu links */
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+  color: #f1f1f1;
+  -webkit-transition: width .2s ease-in;
+      -moz-transition:  width .2s ease-in;
+       -ms-transition:  width .2s ease-in;
+            transition: width .2s ease-in;
+}
+
+
+/* Position and style the close button (top right corner) */
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.sidenav li a:hover {
+  color: #f1f1f1;
+  background:#e7ab3c;
+  -webkit-transform: translate3d(10px,0,0);
+  -webkit-transition: all .35s ease-in-out;
+
+}
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+  transition: margin-left .5s;
+  padding: 20px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+
+/* css for sidebar opening button */
+.sidebutton {
+    font-size:30px;
+    cursor:pointer;
+    position:relative;
+    top:30px;
+}
+
+@media only screen and (max-width: 832px){
+    .sidebutton {
+        right:0px;
+    }
+
+}
+
+.sidebutton:hover {
+    border-style:solid;
+    border-width:0.5px;
+    outline-width: 10px;
+    transform: scale(1.1);
+    -webkit-transform: translate3d(30px,30px,30px,30px);
+    -webkit-transition: all .35s ease-in-out;
+}
+
+
+
+/* css for sort by size */
+
+.blog_right_sidebar .tag_cloud_widget ul li {
+  display: inline-block;
+}
+
+.blog_right_sidebar .tag_cloud_widget ul li a {
+  display: inline-block;
+  border: 1px solid #eee;
+  background: #fff;
+  padding: 0px 13px;
+  margin-bottom: 8px;
+  -webkit-transition: all 0.3s ease 0s;
+  -o-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+  color: #222222;
+  font-size: 12px;
+}
+
+.blog_right_sidebar .tag_cloud_widget ul li a:hover {
+  background: #ff2f92;
+  color: #fff;
+}
+
+/* CSS for Size filter input button */
+
+.blog_right_sidebar .tag_cloud_widget ul li input{
+  display: inline-block;
+  border: 1px solid #eee;
+  background: #fff;
+  padding: 0px 13px;
+  margin-bottom: 8px;
+  -webkit-transition: all 0.3s ease 0s;
+  -o-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+  color: #222222;
+  font-size: 12px;
+}
+
+.blog_right_sidebar .tag_cloud_widget ul li input:hover {
+  background: #ff2f92;
+  color: #fff;
+}

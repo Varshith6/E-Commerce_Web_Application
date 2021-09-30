@@ -1,0 +1,325 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/tailorpage.css' %}">
+<link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+<link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet'>
+<link rel="stylesheet" href="{% static 'css/about_us.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
+<style>
+.banner_area .banner_inner .overlay {
+  background: url(https://rsdistribution.ca/wp-content/uploads/2017/10/Free-vintage-desktop-wallpaper-1920px-HD.jpg) no-repeat scroll center center;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 100%;
+  bottom: 0;
+  z-index: -1;
+  opacity: 1;
+}
+
+.bgcolor {
+    height: 74px;
+    width: 100%;
+    background: rgba(249,250,251,1);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(249,250,251,1)), color-stop(0%, rgba(249,250,251,1)), color-stop(100%, rgba(225,228,231,1)));
+    background: linear-gradient(to bottom, rgba(249,250,251,1) 0%, rgba(249,250,251,1) 0%, rgba(225,228,231,1) 100%);
+}
+
+.About_sec {
+    width: 100%;
+    padding: 70px 0px 30px 0px;
+}
+
+.About_sec .Center {
+    max-width: 1100px;
+    margin: auto;
+    overflow: hidden;
+    text-align: center;
+}
+
+.About_sec h2 {
+    font-size: 56px;
+    color: #000;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 400;
+    margin: 0px;
+    text-transform: uppercase;
+    line-height: 60px;
+    letter-spacing: -0.4px;
+}
+
+p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+.About_sec p {
+    padding: 24px 0px 35px 0px;
+    font-size: 14px;
+    color: #979797;
+    margin: 0px;
+    font-family: 'Open Sans', sans-serif;
+    line-height: 25px;
+    font-weight: 400;
+}
+
+.About_sec .Line {
+    border: solid 1px #ff9408;
+    height: 2px;
+    width: 252px;
+    margin: auto;
+}
+
+.white-box { width: 1000px; height: 500px; margin-top: 80px; margin-left: auto; margin-right: auto;
+
+background: rgba(255,255,255,0.9);
+padding: 30px;
+-webkit-box-shadow: 3px 3px 5px 6px #ccc;;
+-moz-box-shadow: 3px 3px 5px 6px #ccc;
+box-shadow: 3px 3px 5px 6px #ccc;
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+-ms-border-radius: 5px;
+-o-border-radius: 5px;
+border-radius: 5px;
+}
+
+.featured:before {
+content: '+';
+font-weight: 400;
+display: inline-block;
+margin-right: 5px;
+color: #4CB1FF;
+}
+
+.vertical-text {width:50px; height:50px; margin: 30px 0 auto auto; background: #4CB1FF;}
+.vertical-text span {
+width: 50px;
+display: inline-block;
+text-align: center;
+-webkit-transform: rotate(-90deg);
+-moz-transform: rotate(-90deg);
+-ms-transform: rotate(-90deg);
+-o-transform: rotate(-90deg);
+transform: rotate(-90deg);
+}
+
+@media only screen and (max-width: 767px){
+    .fa-chevron-left{
+        padding-top:80px;
+    }
+
+    .fa-chevron-right{
+        padding-top:80px;
+    }
+}
+
+.super_container{
+    padding-left:0px;
+    padding-right:0px;
+    width:100%;
+
+}
+
+</style>
+        <!--================Home Banner Area =================-->
+
+<!--================End Home Banner Area =================-->
+
+
+<div class="About_sec">
+    <div class="Center">
+        <h2>about us</h2>
+        <p>Welcome to SareeHouseonline,your number one source for women's clothing.Set up in 2016,Sareehouse has earned the customers' trust from the
+            beginning by providing the finest varieties at affordable prices. We're dedicated in giving you the best of products and
+            take pride in ourselves for providing excellent service,finest wear and customer satisfaction.
+            <br>
+            <br>
+            As the online branch of SareeHouse, we obtain our products from the best in India ranging from Surat,Kolkata to Coimbatore,Kanchi and
+            many more places.Currently, we are selling exclusively in Hyderabad with plans to expand soon. That's not it,we have also
+            established a premium boutique by the name "Shrishti Studio" at the same address(at bottom of page) that caters to customer's specific designs.
+            <br>
+            We hope you enjoy our products as much as we enjoy offering them to you. If you have any questions or comments,
+            please don't hesitate to contact us.
+
+
+        </p>
+        <div class="Line"></div>
+    </div>
+</div>
+
+<div class="bgcolor" style="width:100%;"></div>
+
+<main class="page-content">
+    <div class="card">
+        <div class="content">
+            <h2 class="title">Wide Variety of Sarees</h2>
+            <p class="copy" style="color:#FFFFFF;">Wide range of sarees with exquisite designs and authentic style</p>
+            <a href="{% url 'cart:category_sarees' %}"><button class="btn">View</button></a></div>
+    </div>
+    <div class="card">
+        <div class="content">
+            <h2 class="title">Dresses and More!</h2>
+            <p class="copy" style="color:#FFFFFF;">Dresses, Chudidars and a lot more like you've never seen before</p>
+            <a href="{% url 'cart:category_dresses' %}"><button class="btn">View</button></a>
+        </div>
+    </div>
+    <div class="card">
+        <div class="content">
+            <h2 class="title">Fancy wear & Common outfits </h2>
+            <p class="copy" style="color:#FFFFFF;">Many collections from attractive fancy wear to a casual homely look</p>
+            <a href="{% url 'cart:Allproducts' %}"><button class="btn">View</button></a>
+        </div>
+    </div>
+    <div class="card">
+        <div class="content">
+            <h2 class="title">Expert Tailoring Studio</h2>
+            <p class="copy" style="color:#FFFFFF;">At Srishti Studio, we provide the best services from our expert team</p>
+            <a href="{% url 'cart:tailoring' %}"><button class="btn">View</button></a>
+        </div>
+    </div>
+</main>
+
+
+
+
+<!-- Section: Testimonials v.2 -->
+<section class="text-center my-5">
+
+  <!-- Section heading -->
+  <h2 class="h1-responsive font-weight-bold my-5">Testimonials</h2>
+
+  <div class="wrapper-carousel-fix">
+    <!-- Carousel Wrapper -->
+    <div id="carousel-example-1" class="carousel no-flex testimonial-carousel slide carousel-fade" data-ride="carousel"
+      data-interval="false">
+      <!--Slides-->
+      <div class="carousel-inner" role="listbox">
+        <!--First slide-->
+        <div class="carousel-item active">
+          <div class="testimonial">
+            <!--Avatar-->
+            <!--Content-->
+            <p>
+              <i class="fas fa-quote-left"></i> I  visited a lot of stores looking for a beautiful saree. I was'nt satisfied until I came across
+                your website and I was elated by the varieties presented. I recommended my friends to definitely
+                check out your website.
+            </p>
+            <h4 class="font-weight-bold">A.Padmavati</h4>
+            <h6 class="font-weight-bold my-3">.</h6>
+            <!--Review-->
+            <i class="fas fa-star blue-text"> </i>
+            <i class="fas fa-star blue-text"> </i>
+            <i class="fas fa-star blue-text"> </i>
+            <i class="fas fa-star blue-text"> </i>
+            <i class="fas fa-star-half-alt blue-text"> </i>
+          </div>
+        </div>
+        <!--First slide-->
+        <!--Second slide-->
+        <div class="carousel-item">
+          <div class="testimonial">
+            <!--Avatar-->
+
+            <!--Content-->
+            <p>
+              <i class="fas fa-quote-left"></i>I was very happy with the excellent work on my granddaughter's birthday dress.The design and fitting
+            are very good.</p>
+            <h4 class="font-weight-bold">Shwetha</h4>
+            <h6 class="font-weight-bold my-3">.</h6>
+            <!--Review-->
+            <i class="fas fa-star blue-text"> </i>
+            <i class="fas fa-star blue-text"> </i>
+            <i class="fas fa-star blue-text"> </i>
+            <i class="fas fa-star blue-text"> </i>
+            <i class="fas fa-star blue-text"> </i>
+          </div>
+        </div>
+        <!--Second slide-->
+        <!--Third slide-->
+        <div class="carousel-item">
+          <div class="testimonial">
+            <!--Avatar-->
+
+            <!--Content-->
+            <p>
+              <i class="fas fa-quote-left"></i> After visiting your store, I was impressed by your special collection of Handloom and Benarasi
+            sarees. The varieties made me want to buy many more than what i actually wanted.</p>
+            <h4 class="font-weight-bold">Saritha</h4>
+            <h6 class="font-weight-bold my-3"></h6>
+            <!--Review-->
+            <i class="fas fa-star blue-text"> </i>
+            <i class="fas fa-star blue-text"> </i>
+            <i class="fas fa-star blue-text"> </i>
+            <i class="fas fa-star blue-text"> </i>
+            <i class="fas fa-star blue-text"> </i>
+          </div>
+        </div>
+        <!--Third slide-->
+      </div>
+      <!--Slides-->
+      <!--Controls-->
+      <a class="carousel-control-prev left carousel-control" href="#carousel-example-1" role="button"
+        data-slide="prev">
+        <span class="fa fa-chevron-left" aria-hidden="true" style="color:black;font-size:30px;"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next right carousel-control" href="#carousel-example-1" role="button"
+        data-slide="next">
+        <span class="fa fa-chevron-right" aria-hidden="true" style="color:black;font-size:30px;"></span>
+        <span class="sr-only">Next</span>
+      </a>
+      <!--Controls-->
+    </div>
+    <!-- Carousel Wrapper -->
+  </div>
+
+</section>
+<!-- Section: Testimonials v.2 -->
+
+
+    <!-- Tailoring  begin-->
+
+  <div class="container" style="padding-bottom:30px;">
+    <h2 style="text-align:center;padding-top:100px;" class="h1-responsive font-weight-bold my-5">Our Tailoring </h2>
+    <div class="tailorpad">
+
+            <div class="row">
+                <div class="contana" >
+                <img src="{% static 'img/tailoring.jpg' %}" alt="Tailoring Image" class="tailorimage">
+                <div class="text-block">
+                    <p class="tailtitle"> Srishti Studio </p>
+                </div>
+                <div class="tailorwords">
+                    <p class="tailortext">We also offer complete tailoring services through SareeHouse's affiliate
+                        <span style="color:red;">"Shrishti Studios"</span> at high quality. To find
+                    out about all the tailoring services provided click the button below</p>
+                    <div class="btnpad">
+                     <a href="#"><button class="btn btn-amber"  style="position:relative;"><b style="color:black;font-size:14px;">Srishti Tailoring</b></button></a>
+                    </div>
+                    </div>
+            </div>
+
+        </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+<!--<div style="background-color:#FFF0F5; min-height: 600px;position:relative;width:99.4vw;left:50%;right:50%;margin-left: -50vw;-->
+<!--  margin-right: -50vw;z-index:-1000;padding-top:50px;">-->
+<!--  <div class="white-box" style="position:relative;;margin:auto;padding:110px;width:50%;text-align:center;">-->
+<!--  </div>-->
+<!--</div>-->
+{% endblock %}

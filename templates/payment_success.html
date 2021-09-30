@@ -1,0 +1,390 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title>Bill Summary</title>
+
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Material Design Bootstrap -->
+    <link href="{% static 'css_mdbootstrap/mdbnew.min.css' %}" rel="stylesheet">
+
+    <!-- Customizer -->
+    <link rel="stylesheet" href="https://mdbootstrap.com/live/_MDB/css/customizer.min.css">
+
+    <!-- Your custom styles (optional) -->
+    <link href="{% static 'css_mdbootstrap/style.css' %}" rel="stylesheet">
+
+<style>
+.success-checkmark {
+  width: 80px;
+  height: 115px;
+  margin: 0 auto;
+
+}
+.success-checkmark .check-icon {
+  width: 80px;
+  height: 80px;
+  position: relative;
+  border-radius: 50%;
+  box-sizing: content-box;
+  border: 4px solid #4CAF50;
+}
+.success-checkmark .check-icon::before {
+  top: 3px;
+  left: -2px;
+  width: 30px;
+  transform-origin: 100% 50%;
+  border-radius: 100px 0 0 100px;
+}
+.success-checkmark .check-icon::after {
+  top: 0;
+  left: 30px;
+  width: 60px;
+  transform-origin: 0 50%;
+  border-radius: 0 100px 100px 0;
+  animation: rotate-circle 4.25s ease-in;
+}
+.success-checkmark .check-icon::before, .success-checkmark .check-icon::after {
+  content: '';
+  height: 100px;
+  position: absolute;
+  background: #eee;
+  transform: rotate(-45deg);
+}
+.success-checkmark .check-icon .icon-line {
+  height: 5px;
+  background-color: #4CAF50;
+  display: block;
+  border-radius: 2px;
+  position: absolute;
+  z-index: 10;
+}
+.success-checkmark .check-icon .icon-line.line-tip {
+  top: 46px;
+  left: 14px;
+  width: 25px;
+  transform: rotate(45deg);
+  animation: icon-line-tip 0.75s;
+}
+.success-checkmark .check-icon .icon-line.line-long {
+  top: 38px;
+  right: 8px;
+  width: 47px;
+  transform: rotate(-45deg);
+  animation: icon-line-long 0.75s;
+}
+.success-checkmark .check-icon .icon-circle {
+  top: -4px;
+  left: -4px;
+  z-index: 10;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  position: absolute;
+  box-sizing: content-box;
+  border: 4px solid rgba(76, 175, 80, 0.5);
+}
+.success-checkmark .check-icon .icon-fix {
+  top: 8px;
+  width: 5px;
+  left: 26px;
+  z-index: 1;
+  height: 85px;
+  position: absolute;
+  transform: rotate(-45deg);
+  background-color: #eee;
+}
+@keyframes rotate-circle {
+  0% {
+    transform: rotate(-45deg);
+  }
+  5% {
+    transform: rotate(-45deg);
+  }
+  12% {
+    transform: rotate(-405deg);
+  }
+  100% {
+    transform: rotate(-405deg);
+  }
+}
+@keyframes icon-line-tip {
+  0% {
+    width: 0;
+    left: 1px;
+    top: 19px;
+  }
+  54% {
+    width: 0;
+    left: 1px;
+    top: 19px;
+  }
+  70% {
+    width: 50px;
+    left: -8px;
+    top: 37px;
+  }
+  84% {
+    width: 17px;
+    left: 21px;
+    top: 48px;
+  }
+  100% {
+    width: 25px;
+    left: 14px;
+    top: 45px;
+  }
+}
+@keyframes icon-line-long {
+  0% {
+    width: 0;
+    right: 46px;
+    top: 54px;
+  }
+  65% {
+    width: 0;
+    right: 46px;
+    top: 54px;
+  }
+  84% {
+    width: 55px;
+    right: 0px;
+    top: 35px;
+  }
+  100% {
+    width: 47px;
+    right: 8px;
+    top: 38px;
+  }
+}
+
+@media only screen and (max-width: 600px){
+    .biglogo{
+        display:none!important;
+    }
+}
+</style>
+
+</head>
+   <div style="float:left;" class="biglogo">
+        <a href="#"><img src="{% static 'img/saree_house_logo.png' %}" alt=""></a>
+    </div>
+<div class="success-checkmark" style="">
+  <div class="check-icon">
+    <span class="icon-line line-tip"></span>
+    <span class="icon-line line-long"></span>
+    <div class="icon-circle"></div>
+    <div class="icon-fix"></div>
+  </div>
+
+</div>
+
+<br>
+<div style="text-align:center;">
+    <h2>Your order has been succesfully placed.</h2>
+</div>
+
+
+
+
+
+
+    <body class="fixed-sn white-skin">
+
+
+    <!--Main layout-->
+    <main class="">
+
+        <div class="container-fluid">
+
+            <!-- First row -->
+            <div class="row white z-depth-1 mb-r">
+
+                <!-- Navigation -->
+                <div class="col-md-6">
+                    <h4 class="h4-responsive mt-3">Order Summary</h4>
+                </div>
+
+                <div class="col-md-6 text-md-right">
+                    <a href="{% url 'cart:item-list' %}" class="btn btn-secondary">Back to Home</a>
+                    <button class="btn btn-primary" onclick="printPage('block2');"><i class="fa fa-print left"></i> Print</button>
+                </div>
+                <!-- /.Navigation -->
+
+            </div>
+            <!-- /.First row -->
+
+            <section class="invoice row mb-r"   id="block2">
+
+                <div class="col-md-12">
+
+                    <!-- First row -->
+                    <div class="row invoice-data">
+
+                        <div class="col-6">
+                            <p><small>From:</small></p>
+                            <p><strong>Saree House</strong></p>
+                            <p>8-1-284/OU/141</p>
+                            <p>OU Colony</p>
+                            <p>Near Shaikpet Darga</p>
+                            <p>Hyderabad 500008</p>
+                        </div>
+                        <div class="col-6 text-right">
+                            <h4 class="h4-responsive"><small>Transaction ID</small><br/><strong><span class="blue-text">{{ txnid }}</span></strong></h4>
+
+                            <p><small>To:</small></p>
+                            {% if apartment %}
+                            <p><strong>{{ apartment }}</strong></p>
+                            {% endif %}
+                            {% if street %}
+                            <p>{{ street }}</p>
+                            {% endif %}
+                            <p>Hyd, Telangana {{ pincode }}</p>
+                        </div>
+
+                    </div>
+                    <!-- ./First row -->
+
+                    <!-- Second row -->
+                    <div class="row mt-2">
+                        <div class="col-md-12">
+                            <div class="table-responsive">
+                                <!-- Item list -->
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Item list</th>
+                                            <th>Quantity</th>
+                                            <th>Price</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for item in order.items.all %}
+                                        <tr>
+                                            <td>{{ item.item.title }}</td>
+                                            <td>1</td>
+                                            {% if item.item.discount_price %}
+                                            <td>{{ item.item.discount_price }}</td>
+                                            {% else %}
+                                            <td>{{ item.item.price }}</td>
+                                            {% endif %}
+
+                                        </tr>
+                                        {% endfor %}
+<!--                                        <tr>-->
+<!--                                            <td>Material Design for Wordpress</td>-->
+<!--                                            <td>2</td>-->
+<!--                                            <td>$138</td>-->
+<!--                                        </tr>-->
+<!--                                        <tr>-->
+<!--                                            <td>MDBootstrap Portfolio Template Personal Licence</td>-->
+<!--                                            <td>1</td>-->
+<!--                                            <td>$49</td>-->
+<!--                                        </tr>-->
+<!--                                        <tr>-->
+<!--                                            <td>MDBootstrap Magazine Corporate Licence</td>-->
+<!--                                            <td>1</td>-->
+<!--                                            <td>$249</td>-->
+<!--                                        </tr>-->
+
+                                    </tbody>
+                                </table>
+                                <!-- /.Item list -->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.Second row -->
+
+                    <!-- Third row -->
+                    <div class="row mt-2">
+                        <div class="col-md-3 float-md-right ml-auto">
+                            <ul class="striped list-unstyled">
+                                <li><strong>Sub Total:</strong><span class="float-right">&#8377<!--Comment to remove whitespace-->{{ totalamount }}</span></li>
+                                <li><strong>Delivery Charges:</strong><span class="float-right">&#8377<!--Comment to remove whitespace-->49</span></li>
+                                <li><strong>TOTAL:</strong><span class="float-right">&#8377<!--Comment to remove whitespace-->{{ amount }}</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- /.Third row -->
+                </div>
+
+            </section>
+        </div>
+
+    </main>
+    <!--/Main layout-->
+
+
+
+    <!-- SCRIPTS -->
+
+    <!-- JQuery -->
+    <script type="text/javascript" src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+
+    <!-- Bootstrap dropdown -->
+    <script type="text/javascript" src="{% static 'js_mdbootstrap/popper.min.js' %}"></script>
+
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="{% static 'js/mdb.min.js' %}"></script>
+
+    <!-- Customizer -->
+    <script type="text/javascript" src="https://mdbootstrap.com/live/_MDB/js/customizer.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.1.0/jspdf.umd.min.js"></script>
+
+    <script>
+        // Data Picker Initialization
+        $('.datepicker').pickadate();
+
+
+        // Material Select Initialization
+        $(document).ready(function() {
+            $('.mdb-select').material_select();
+        });
+
+        // Sidenav Initialization
+        $(".button-collapse").sideNav();
+
+        // Tooltips Initialization
+        $(function() {
+            $('[data-toggle="tooltip"]').tooltip()
+        });
+
+    </script>
+
+<script>
+function printPage(id)
+{
+   var html="<html>";
+   html+= document.getElementById(id).innerHTML;
+
+   html+="</html>";
+
+   var printWin = window.open('','','left=0,top=0,width=400,height=400,toolbar=0,scrollbars=0,status  =0');
+   printWin.document.write(html);
+   printWin.document.close();
+   printWin.focus();
+   printWin.print();
+   printWin.close();
+}
+</script>
+
+
+
+</body>
+
+</html>

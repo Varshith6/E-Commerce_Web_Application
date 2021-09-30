@@ -1,0 +1,287 @@
+{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Order Summary</title>
+</head>
+<body>
+{% block content %}
+  <link href="{% static 'css_mdbootstrap/bootstrap.min.css' %}" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="{% static 'css_mdbootstrap/mdb.min.css' %}" rel="stylesheet">
+  <!-- Your custom styles (optional) -->
+  <link href="{% static 'css_mdbootstrap/style.min.css' %}" rel="stylesheet">
+  <link href="{% static 'css/style.css' %}" rel="stylesheet">
+  <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet'>
+<style>
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: #474e5d;
+  padding-top: 50px;
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto 15% auto;
+  border: 1px solid #888;
+  width: 80%;
+}
+.cancelbtn, .deletebtn {
+  float: left;
+  width: 50%;
+}
+
+.cancelbutton, .deletebutton {
+  float: left;
+  width: 50%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  opacity: 0.9;
+}
+
+
+  .deletebtn {
+    padding:10px 40px;
+    background: #e7e9ec;
+    border-radius: 3px;
+    border-color: #ADB1B8 #A2A6AC #8D9096;
+    border-style: solid;
+    border-width: 1px;
+    cursor: pointer;
+    display: inline-block;
+    padding: 0;
+    text-align: center;
+    text-decoration: none!important;
+    vertical-align: middle;
+  }
+  .ordersum{
+  color:#0066c0;
+  }
+
+  .ordersum:hover{
+    text-decoration: underline;
+    color : #FF0000!important;
+  }
+
+  .deletebtn:hover{
+    color:orange!important;
+  }
+
+  html,
+  body{
+    width:100%;
+
+  }
+
+  .belowprice{
+    display:none;
+  }
+
+  .deletepstn{
+    display:none;
+  }
+
+@media only screen and (max-width: 1150px){
+  .deletebtn{
+    width:100%;
+  }
+}
+
+
+
+@media only screen and (max-width: 550px){
+
+  .quanthead{
+    display:none;
+  }
+
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 50px;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: #474e5d;
+    padding-top: 50px;
+  }
+
+  .modal-content {
+    background-color: #fefefe;
+    margin: 5% auto 15% auto;
+    border: 1px solid #888;
+    width: 100%;
+  }
+
+  .cancelbtn, .deletebtn {
+    float: left;
+    width: 50%;
+  }
+
+  .totalcol{
+    column-span: 1;
+  }
+
+  .container{
+    margin-left:-3%;
+  }
+
+  .belowprice{
+    position:relative;
+    width:100%;
+    word-break:break-word;
+    display:flex;
+    color:red;
+
+  }
+
+  .deletepstn{
+    position:relative;
+    width:100%;
+    display:flex;
+  }
+
+  .totalcol{
+    column-span: 1;
+  }
+}
+@media only screen and (max-width: 410px){
+  .container{
+    padding-right:0px;
+    width:min-content;
+  }
+}
+
+
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+a:hover {
+  text-decoration:underline;
+  color:blue;
+}
+
+</style>
+  <main>
+    <div class="container">
+        <div class="table-responsive text-nowrap">
+          <h2 style="padding-top:20px;">Active Orders</h2>
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Orders</th>
+                <th class="quanthead"></th>
+                <th class="quanthead"></th>
+                <th scope="col" class="quanthead">Amount Paid</th>
+
+              </tr>
+            </thead>
+            <tbody>
+            {% for order in orders %}
+              <tr>
+                <td><div style="width:100%;word-break:break-word;"><a href="" class="ordersum" style="color:#0066c0;font-family: 'Lato',Arial;
+                 position:relative;font-size: 17px!important;line-height: 1.255!important;font-weight: 700!important;">
+                  {% for order_item in order.items.all %}<div>{{ order_item.item.title }},</div>{% endfor %}</a></div>
+                  <div class="belowprice">Amount Paid: &#8377<!--Comment to remove whitespace-->{{ order.amount }}</div>
+                  {% if order.days_since_order %}
+                  <div style="padding-top:20px;" class="deletepstn"><button type="button" style="min-width: 0.181818%;padding:2px 10px;" onclick="document.getElementById('{{ order.txnid }}').style.display='block'" class="deletebtn">Cancel Order</button></div>
+                  {% else %}
+                  <div></div>
+                  {% endif %}
+                </td>
+
+
+                {% if order.days_since_order %}
+                <td class="quanthead"><div style="position:relative;"><button type="button" onclick="document.getElementById('{{ order.txnid }}').style.display='block'" class="deletebtn" style="position:relative;">Cancel Order</button></div>
+                </td>
+                {% else %}
+                <td class="quanthead"></td>
+                {% endif %}
+                <td>
+                  <div class="modal" id="{{ order.txnid }}" >
+                    <form class="modal-content" method="POST">
+                      {% csrf_token %}
+                      <div class="container" style="text-align:center;">
+                        <h2>Cancel Order</h2>
+                        <p>Are you sure you want to cancel this order?</p>
+                        <input type="hidden" name="txnid" value="{{ order.txnid }}">
+                        <div class="clearfix">
+                          <button type="button" onclick="document.getElementById('{{ order.txnid }}').style.display='none'" class="cancelbutton" style="background-color: #ccc;color:black;">Cancel</button>
+                          <button type="submit" onclick="document.getElementById('{{ order.txnid }}').style.display='none'" class="deletebutton" style="background-color: #f44336;">Delete</button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </td>
+
+
+
+
+                <td class="quanthead">
+                  &#8377<!--Comment to remove whitespace-->{{ order.amount }}
+                </td>
+              </tr>
+              {% empty %}
+              <tr>
+                <td colspan="3">Your don't have any active orders</td>
+              </tr>
+              <tr>
+                <td colspan="3">
+                  <a class="btn btn-primary float-right" href="/">Continue Shopping</a>
+                </td>
+              </tr>
+            {% endfor %}
+
+            <tr>
+              <td class="quanthead" colspan="1"><a class="btn btn-primary float-right" href="{% url 'cart:Allproducts' %}">Continue Shopping</a></td>
+              <td class="quanthead"></td>
+              <td style="right:10%;position:relative;" colspan="1"><a class="btn btn-warning float-right ml-2" href="/">Back to home</a></td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+    </div>
+  </main>
+<p style="font-size:12px;"><b>Note:-</b>Orders placed can only be cancelled within 24 hours of placing the order. For more information on cancellation policy,
+  <a href="">click here</a></p>
+<script>
+
+var modal = document.getElementById('hello');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+</script>
+
+<script type="text/javascript">
+                setInterval(function() {
+                  window.location.reload();
+                }, 600000);
+</script>
+{% endblock %}
+
+</body>
+</html>

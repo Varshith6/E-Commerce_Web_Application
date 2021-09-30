@@ -1,0 +1,35 @@
+<h1>HELLO</h1>
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+{% crispy form fom.helper %}
+
+{% block hello %}
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-lg-offset-3">
+                <h3 class="text-center">Suscribe for latest updates</h3>
+                {% if messages %}
+                    {% for message in messages %}
+                        <div {% if message.tags %} class="{{message.tags}}" {% endif %} role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span> </button>
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% else %}
+
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="input-group">
+                        {% crispy form %}
+                        <span class="input-group-btn">
+                            <button class="btn btn-secondary" type="submit">Subscri</button>
+                        </span>
+                    </div>
+                </form>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

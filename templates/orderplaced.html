@@ -1,0 +1,18 @@
+{% load static %}
+<html>
+<head>
+</head>
+<body>
+<div>
+<h2 style="float:left;">Order Successfully placed.</h2>
+<a style="left:50%;position:absolute;"><img src="{% static 'img/saree_house_logo_horiz_4.png' %}" alt=""></a>
+<h2 style="float:right"><b>Txnid: {{ txnid }}</b></h2>
+</div>
+<div style="position:absolute;top:70px;left:0px;">
+<p>Your order of {% for item in order.items.all %} <b>{{ item.item.title }},</b>{% endfor %} has been successfully placed. You will receive your order in a few days.
+    To track your order please visit <a href="{% url 'cart:order_tracking' %}">Track Order</a></p>
+
+<p>For any queries please <a href="{% url 'cart:contact' %}">Contact Us</a></p>
+</div>
+</body>
+</html>

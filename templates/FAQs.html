@@ -1,0 +1,477 @@
+<!doctype html>
+{% extends 'base.html' %}
+{% load static %}
+
+<html lang="en">
+
+
+
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/FAQ_page.css' %}">
+<script>
+    var prevScrollpos = window.pageYOffset;
+    window.onscroll = function() {
+    var currentScrollPos = window.pageYOffset;
+      if (currentScrollPos < 80) {
+        document.getElementById("navbar").style.top = "50px";
+        document.getElementById("uppersearch").style.top = "-50px";
+
+      } else {
+        document.getElementById("navbar").style.top = "-50px";
+        document.getElementById("uppersearch").style.top = "0px";
+      }
+      prevScrollpos = currentScrollPos;
+    }
+
+</script>
+<header class="cd-header flex flex-column flex-center" style="margin-left:-9%;margin-right:-9%;">
+  <div class="text-component text-center">
+    <h1>FAQs</h1>
+  </div>
+<style>
+.cd-faq__trigger:hover{
+	color:black;
+}
+
+a:focus{
+	color:black;
+}
+
+.active{
+	opacity:1;
+}
+
+.open{
+	opacity:1;
+}
+
+body,html{
+	width:100%;
+
+}
+
+
+</style>
+</header>
+
+<section class="cd-faq js-cd-faq container max-width-md margin-top-lg margin-bottom-lg">
+	<ul class="cd-faq__categories">
+		<li><a class="cd-faq__category cd-faq__category-selected truncate" href="#basics">Basics</a></li>
+		<li><a class="cd-faq__category truncate" href="#mobile">Shopping</a></li>
+		<li><a class="cd-faq__category truncate" href="#account">Account</a></li>
+		<li><a class="cd-faq__category truncate" href="#payments">Payments</a></li>
+		<li><a class="cd-faq__category truncate" href="#privacy">Privacy</a></li>
+		<li><a class="cd-faq__category truncate" href="#delivery">Delivery</a></li>
+	</ul> <!-- cd-faq__categories -->
+
+	<div class="cd-faq__items">
+		<ul id="basics" class="cd-faq__group">
+			<li class="cd-faq__title"><h2>Basics</h2></li>
+
+			<li class="cd-faq__item">
+				<a class="cd-faq__trigger" href="#0"><span>What is Sareehouseonline?</span></a>
+				<div class="cd-faq__content">
+          <div class="text-component">
+            <p><b style="color:blue;">Sareehouseonline</b> is the digital branch of SareeHouse outlet. It is an ecommerce platform that
+				has in store a variety of sarees ,dresses and much more. Customers can place orders and have the products delivered
+				to their address.</p>
+          </div>
+				</div> <!-- cd-faq__content -->
+			</li>
+
+			<li class="cd-faq__item">
+				<a class="cd-faq__trigger" href="#0"><span>How do I change my password?</span></a>
+				<div class="cd-faq__content">
+          <div class="text-component">
+            <p>If you want to change your password, please visit Login page and click on forgot password. Then, enter your email in the
+				space provided and a link will be sent to that mail to set a new password.</p>
+          </div>
+				</div> <!-- cd-faq__content -->
+			</li>
+
+			<li class="cd-faq__item">
+				<a class="cd-faq__trigger" href="#0"><span>How do I sign up?</span></a>
+				<div class="cd-faq__content">
+          <div class="text-component">
+            <p>If you would like to Signup and create an account, click on the login/signup link given at the top menu. You would need to provide your
+			Email id and set up a password along with a username to create and access the account.</p>
+          </div>
+				</div> <!-- cd-faq__content -->
+			</li>
+
+			<li class="cd-faq__item">
+				<a class="cd-faq__trigger" href="#0"><span>Should I have an account in Sareehouseonline?</span></a>
+				<div class="cd-faq__content">
+          <div class="text-component">
+            <p>An account in Sareehouse online is compulsory to access cart and place orders. However, even without an account you can view
+				our products but cannot place them in cart.</p>
+          </div>
+				</div> <!-- cd-faq__content -->
+			</li>
+
+			<li class="cd-faq__item">
+				<a class="cd-faq__trigger" href="#0"><span>How do i give a review/suggestion?</span></a>
+				<div class="cd-faq__content">
+          <div class="text-component">
+            <p>You can visit the <b>Contact Us</b> page and write a review/suggestion to us.</p>
+          </div>
+				</div> <!-- cd-faq__content -->
+			</li>
+		</ul> <!-- cd-faq__group -->
+
+		<ul id="mobile" class="cd-faq__group">
+			<li class="cd-faq__title"><h2>Shopping</h2></li>
+			<li class="cd-faq__item">
+				<a class="cd-faq__trigger" href="#0"><span>How do I buy products?</span></a>
+				<div class="cd-faq__content">
+          <div class="text-component">
+            <p>To start buying products, you first need to login from your account(Please create one if you haven't created yet by
+				<i style="font-style:italic;">Signing Up</i>).After logging in,select the products you wish to buy and add them to your cart.After you
+			have added the products to cart, visit the cart and click on <i style="font-style:italic;">Proceed to Checkout</i>.Then, proceed
+				to fill in the details required and at last, proceed to pay. Finally, after payment is done, your order will be delivered to you in
+			a few days.You can also download the receipt after payment on the page.</p>
+          </div>
+				</div> <!-- cd-faq__content -->
+			</li>
+
+			<li class="cd-faq__item">
+				<a class="cd-faq__trigger" href="#0"><span>How do I cancel my order?</span></a>
+				<div class="cd-faq__content">
+          <div class="text-component">
+            <p>Please note that cancellations have to be made within 24 hours after placing an order. For cancelling your order you will have
+				to visit <i style="font-style:italic;color:red;">Active Orders</i> page and click on <i style="font-style:italic;">Cancel Order</i>
+				at the respective order (OR) you can get in touch with the customer support executive by sending a request via
+				<i style="font-style:italic;color:red;">Contact Us</i> page and giving your transaction id in the message.It may be noted that if
+				cancellation of the order happens, then it attracts the payment gateway service charge, in such a case the respective service charge
+				shall be deducted and the balance paid back to the customer. You may kindly note that order cannot be cancelled after 24 hours of
+				placing order and once the shipment process has started from our end.</p>
+          </div>
+				</div> <!-- cd-faq__content -->
+			</li>
+
+			<li class="cd-faq__item">
+				<a class="cd-faq__trigger" href="#0"><span>Checking out product categories</span></a>
+				<div class="cd-faq__content">
+          <div class="text-component">
+            <p>You will see the widest range of Sarees, Dresses & many more Products with broad product categories on SareeHouse Pages,
+				so you can click on the broad/sub classification of your choice and then find essential information relevant to the product.
+			Browsing through categories also helps in narrowing down your choices.</p>
+          </div>
+				</div> <!-- cd-faq__content -->
+			</li>
+
+			<li class="cd-faq__item">
+				<a class="cd-faq__trigger" href="#0"><span>What information is needed for checkout process?</span></a>
+				<div class="cd-faq__content">
+          <div class="text-component">
+            <p>Checkout process requires basic information for better customer service and delivery such as personal details(Name,etc.)
+			and Address for delivery. All fields must be compulsorily filled unless marked as optional.</p>
+          </div>
+				</div> <!-- cd-faq__content -->
+			</li>
+
+			<li class="cd-faq__item">
+				<a class="cd-faq__trigger" href="#0"><span>What is shipping address?</span></a>
+				<div class="cd-faq__content">
+          <div class="text-component">
+            <p>The shipping address is the address where you would like your order to be delivered.</p>
+          </div>
+				</div> <!-- cd-faq__content -->
+			</li>
+
+			<li class="cd-faq__item">
+				<a class="cd-faq__trigger" href="#0"><span>What is billing address?</span></a>
+				<div class="cd-faq__content">
+          <div class="text-component">
+            <p>The billing address is the address associated with your credit card if you are using a credit card for payment.The billing address
+				must match the address that your credit card company has on file. It is generally not required unless specified by the credit card
+				company.It is used to verify your authenticity of your credit card information.</p>
+          </div>
+				</div> <!-- cd-faq__content -->
+			</li>
+		</ul> <!-- cd-faq__group -->
+
+		<ul id="account" class="cd-faq__group">
+			<li class="cd-faq__title"><h2>Account</h2></li>
+			<li class="cd-faq__item">
+				<a class="cd-faq__trigger" href="#0"><span>How do I track my order?</span></a>
+				<div class="cd-faq__content">
+          <div class="text-component">
+            <p>First, create an account using Signup link if you have'nt created one yet. If you have alredy created one, then click on Login link
+				annd enter the email and password you had first used to create the account<i style="font-style:italic;">NOTE:-</i> Login is compulsory
+				to place items in cart and order them.</p>
+          </div>
+				</div> <!-- cd-faq__content -->
+			</li>
+
+			<li class="cd-faq__item">
+				<a class="cd-faq__trigger" href="#0"><span>How do I change my password?</span></a>
+				<div class="cd-faq__content">
+          <div class="text-component">
+            <p>If you want to change your password, please visit Login page and click on forgot password. Then, enter your email in the
+				space provided and a link will be sent to that mail to set a new password.</p>
+          </div>
+				</div> <!-- cd-faq__content -->
+			</li>
+
+			<li class="cd-faq__item">
+				<a class="cd-faq__trigger" href="#0"><span>How do I track my order?</span></a>
+				<div class="cd-faq__content">
+          <div class="text-component">
+            <p>To track your order, first login to your sareehouse account and then click on
+				<i style="font-style:italic;color:red;">Active orders</i> link. There,
+			you can track your current acive orders that have not yet been delivered.</p>
+          </div>
+				</div> <!-- cd-faq__content -->
+			</li>
+
+			<li class="cd-faq__item">
+				<a class="cd-faq__trigger" href="#0"><span>I forgot my password. How do I reset it?</span></a>
+				<div class="cd-faq__content">
+          <div class="text-component">
+            <p>If you want to reset your password, please visit Login page and click on forgot password. Then, enter your email in the
+				space provided and a link will be sent to that mail to set a new password.</p>
+          </div>
+				</div> <!-- cd-faq__content -->
+			</li>
+		</ul> <!-- cd-faq__group -->
+
+		<ul id="payments" class="cd-faq__group">
+			<li class="cd-faq__title"><h2>Payments</h2></li>
+
+			<li class="cd-faq__item">
+				<a class="cd-faq__trigger" href="#0"><span>What is the payment procedure?</span></a>
+				<div class="cd-faq__content">
+          <div class="text-component">
+            <p>Please proceed to checkout page after you have added your items in the cart. After the checkout process is complete, you are redirected
+				to a secure payment gateway where you are provided with multiple options to pay. Then, upon selecting the desired option, your payment
+				will be complete and your order will be successfully placed. </p>
+          </div>
+				</div> <!-- cd-faq__content -->
+			</li>
+
+			<li class="cd-faq__item">
+				<a class="cd-faq__trigger" href="#0"><span>What are the payment options available?</span></a>
+				<div class="cd-faq__content">
+          <div class="text-component">
+            <p>A lot of payment options are made available on our payment gateway including credit cards,debit cards,net banking,etc. If you feel don't
+			see your desired payment method available, please send us a message via <i style="font-style:italic;color:red;">Contact Us</i> page or
+			please call us using the numbers given at the bottom of the page.</p>
+          </div>
+				</div> <!-- cd-faq__content -->
+			</li>
+
+			<li class="cd-faq__item">
+				<a class="cd-faq__trigger" href="#0"><span>Can I have the bill for my payment?</span></a>
+				<div class="cd-faq__content">
+          <div class="text-component">
+            <p>Yes. You can definetely have it. The bill summary is immediately displayed on the page you are redirected to after the payment is
+				successful. You can download it in pdf format by clicking the print button. Similar bill summary is also provided to you via mobile
+				sms and email provided by you during the checkout process.</p>
+          </div>
+				</div> <!-- cd-faq__content -->
+			</li>
+
+			<li class="cd-faq__item">
+				<a class="cd-faq__trigger" href="#0"><span>Why did my payment fail?</span></a>
+				<div class="cd-faq__content">
+          <div class="text-component">
+            <p> The error might have occurred due to one of the following reasons-> Poor internet connectivity of the user,payment gateway maintenance
+				period, Incorrect information provided by the user, User cancellation of the payment process,etc. Please try again after checking.
+				Payment errors are possible but very rarely occur due to the error of the SareeHouse server. If errors continue to persist, you can
+				contact through the various methods provided in the <b><a href="{% url 'cart:contact' %}">Contact Us</a></b> page. We will look into
+				the error. </p>
+          </div>
+				</div> <!-- cd-faq__content -->
+			</li>
+
+			<li class="cd-faq__item">
+				<a class="cd-faq__trigger" href="#0"><span>Is there Cash On Delivery(COD) option available?</span></a>
+				<div class="cd-faq__content">
+          <div class="text-component">
+            <p> Cash On Delivery(COD) option is currently unavailable. But, we are working on it to make it available to our customers soon.</p>
+          </div>
+				</div> <!-- cd-faq__content -->
+			</li>
+
+			<li class="cd-faq__item">
+				<a class="cd-faq__trigger" href="#0"><span>Are there any additional taxes to be paid on the product?</span></a>
+				<div class="cd-faq__content">
+          <div class="text-component">
+            <p>Please note that there are no additional taxes incurred on your bill summary. Taxes are already included in the product price.</p>
+          </div>
+				</div> <!-- cd-faq__content -->
+			</li>
+
+			<li class="cd-faq__item">
+				<a class="cd-faq__trigger" href="#0"><span>What are the additional charges incurred during payment?</span></a>
+				<div class="cd-faq__content">
+          <div class="text-component">
+            <p>Please note that there are no additional taxes incurred on your bill summary. Taxes are already included in the product price. There
+				is a minimal fixed delivery fee of Rs.49 that is added to the bill to deliver the products to your home/office in Hyderabad.
+				Delivery fee, therefore is the only additional charge added.</p>
+          </div>
+				</div> <!-- cd-faq__content -->
+			</li>
+
+		</ul> <!-- cd-faq__group -->
+
+		<ul id="privacy" class="cd-faq__group">
+			<li class="cd-faq__title"><h2>Privacy</h2></li>
+			<li class="cd-faq__item">
+				<a class="cd-faq__trigger" href="#0"><span>How do we protect your information?</span></a>
+				<div class="cd-faq__content">
+          <div class="text-component">
+            <p>When you place orders or access your account information, we offer the use of a secure server. The secure server software (SSL) encrypts
+				all information you input before it is sent to us. Further more, all of the customer data we collect is protected against unauthorized
+				access.</p>
+          </div>
+				</div> <!-- cd-faq__content -->
+			</li>
+
+			<li class="cd-faq__item">
+				<a class="cd-faq__trigger" href="#0"><span>Sareehouseonline privacy guarantee</span></a>
+				<div class="cd-faq__content">
+          <div class="text-component">
+            <p>Sareehouseonline.com does not rent, sell, share, barter or in any other way use personally-identifying information collected during
+				your use of our Web site . From time to time we may reveal general statistical information about our Web site and visitors, such
+				as number of visitors, number and type of goods and services purchased, etc., but we will never refer you by name or specific address.
+				Your trust and confidence are our highest priority.</p>
+          </div>
+				</div> <!-- cd-faq__content -->
+			</li>
+
+			<li class="cd-faq__item">
+				<a class="cd-faq__trigger" href="#0"><span>How is my payment data secure?</span></a>
+				<div class="cd-faq__content">
+          <div class="text-component">
+            <p>Your payment data is handled by a trusted and secure payment gateway whose terms and privacy policy can be viewed at their website or
+				information brochure. Your payment credentials are secure and not known to anyone except you.</p>
+          </div>
+				</div> <!-- cd-faq__content -->
+			</li>
+
+			<li class="cd-faq__item">
+				<a class="cd-faq__trigger" href="#0"><span>How can I make sure no one else sees my cart and pages?</span></a>
+				<div class="cd-faq__content">
+          <div class="text-component">
+            <p>Just click on the “Sign Out” link to sign out of SareeHouse’s personalized services. Signing out will allow you to change users
+				and ensures that SareeHouse will ask for a user ID and password when someone visits SareeHouseonline. This way, no one will
+				accidentally see your cart or pages.</p>
+          </div>
+				</div> <!-- cd-faq__content -->
+			</li>
+		</ul> <!-- cd-faq__group -->
+
+		<ul id="delivery" class="cd-faq__group">
+			<li class="cd-faq__title"><h2>Delivery</h2></li>
+
+			<li class="cd-faq__item">
+				<a class="cd-faq__trigger" href="#0"><span>When is my order delivered?</span></a>
+				<div class="cd-faq__content">
+          <div class="text-component">
+            <p>From the time on which an order has been successfully placed, it takes around 2-4 days for the processing and delivery to be completed.</p>
+          </div>
+				</div> <!-- cd-faq__content -->
+			</li>
+
+			<li class="cd-faq__item">
+				<a class="cd-faq__trigger" href="#0"><span>What should I do if my order hasn't been delivered within 2-4 days?</span></a>
+				<div class="cd-faq__content">
+          <div class="text-component">
+            <p>If your order has not been delivered withtin the maximum time frame specified, you may place a complaint to us through the form provided in
+				the <b><a href="{% url 'cart:contact' %}">Contact Us</a></b> page. Transaction ID must be compulsorily be provided in the form. Our
+				team will look into it and see that the problem does not occur.</p>
+          </div>
+				</div> <!-- cd-faq__content -->
+			</li>
+
+			<li class="cd-faq__item">
+				<a class="cd-faq__trigger" href="#0"><span>How do returns or refunds work?</span></a>
+				<div class="cd-faq__content">
+          <div class="text-component">
+            <p>Refunds can be done in 3 scenarios as explained below:-
+				<br>1) If you have cancelled an order within 24 hours of placing it,then it attracts the payment gateway service charge and in such a
+				case the respective service charge shall be deducted and the balance refunded to the customer.
+				<br>2) If there is an error during payment and amount has been deducted, your entire amount shall be refunded to you within a
+				few days without any deductions. If it does not occur within 7 days, you may raise a complaint via Contact Us page.
+				<br>3) If you are not satisfied with the product after delivery due to some significant reason, you can return the product within 12 hours
+				and money shall be refunded to you. If the reason is significant, no money shall be deducted and the entire amount shall be refunded
+				back to you with respect to the product.<i style="font-style:italic;color:red;">Note:-</i>You must first state the reason via
+				<i style="font-style:italic;color:orange;">Contact Us</i> page along with transaction id (or) as a second option,you can call us to state
+				the reason.</p>
+          </div>
+				</div> <!-- cd-faq__content -->
+			</li>
+
+			<li class="cd-faq__item">
+				<a class="cd-faq__trigger" href="#0"><span>What products can i return?</span></a>
+				<div class="cd-faq__content">
+          <div class="text-component">
+            <p>Only those products which are unused, unworn, unwashed and undamaged are eligible for return;
+				discounted and/or altered products will not be eligible for a return. In the unlikely event that your merchandise has arrived
+				in a damaged condition, you will be required to email us a photo of the damaged product within 12 hours of receiving your
+				order at varshitht@gmail.com.</p>
+          </div>
+				</div> <!-- cd-faq__content -->
+			</li>
+
+			<li class="cd-faq__item">
+				<a class="cd-faq__trigger" href="#0"><span>How is my order delivered?</span></a>
+				<div class="cd-faq__content">
+          <div class="text-component">
+            <p>Your order is delivered to the address specified during the checkout process by a delivery person.</p>
+          </div>
+				</div> <!-- cd-faq__content -->
+			</li>
+
+			<li class="cd-faq__item">
+				<a class="cd-faq__trigger" href="#0"><span>How is my order delivered?</span></a>
+				<div class="cd-faq__content">
+          <div class="text-component">
+            <p>Your order is delivered to the address specified during the checkout process by a delivery person.</p>
+          </div>
+				</div> <!-- cd-faq__content -->
+			</li>
+
+			<li class="cd-faq__item">
+				<a class="cd-faq__trigger" href="#0"><span>Disclaimer</span></a>
+				<div class="cd-faq__content">
+          <div class="text-component">
+            <p>Please note that we have the right to refuse refund process if the reasons stated for requesting refund regarding the products are not
+				significant or the products are used, worn, washed and damaged after delivery; discounted and/or altered products will not be eligible
+				for a return. In the unlikely event that your merchandise has arrived in a damaged condition, you will be required to email us a photo
+				of the damaged product within 12 hours of receiving your order at varshitht@gmail.com. If we are satisfied that sufficient reason exists,
+			you will be refunded the entire amount within 2-7 days after we collect back the product.</p>
+          </div>
+				</div> <!-- cd-faq__content -->
+			</li>
+
+			<li class="cd-faq__item">
+				<a class="cd-faq__trigger" href="#0"><span>Customer support</span></a>
+				<div class="cd-faq__content">
+          <div class="text-component">
+            <p>If you didn’t find the answer to your question on this site and have more queries, please Contact Us via the link on our menu or
+				e-mail us mail to: varshitht@gmail.com. We'll be happy to help you.</p>
+          </div>
+				</div> <!-- cd-faq__content -->
+			</li>
+
+		</ul> <!-- cd-faq__group -->
+
+
+
+	</div> <!-- cd-faq__items -->
+
+	<a href="#0" class="cd-faq__close-panel text-replace">Close</a>
+
+  <div class="cd-faq__overlay" aria-hidden="true"></div>
+</section> <!-- cd-faq -->
+<script>document.getElementsByTagName("html")[0].className += " js";</script>
+<script src="{% static 'js/faq2.js' %}"></script>
+<script src="{% static 'js/faq1.js' %}"></script>
+
+{% endblock %}
+
+</html>

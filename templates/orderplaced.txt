@@ -1,0 +1,1 @@
+Your Order has been successfully placed and you will be receiving it in a few days. To track your order, please visit http://127.0.0.1:8000/order_tracking

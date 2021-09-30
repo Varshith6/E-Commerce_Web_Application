@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Checkout Page</title>
+  <!-- Font Awesome -->
+
+  <!-- Bootstrap core CSS -->
+  <link href="{% static 'css_mdbootstrap/bootstrap.min.css' %}" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="{% static 'css_mdbootstrap/mdb.min.css' %}" rel="stylesheet">
+  <!-- Your custom styles (optional) -->
+  <link href="{% static 'css_mdbootstrap/style.min.css' %}" rel="stylesheet">
+</head>
+
+<style>
+@media only screen and (min-width: 768px){
+    .md-form{
+        left:34%;
+    }
+}
+</style>
+
+<body>
+    <div class="container" style="padding-top:3%;width:100%;">
+        <form method="POST" class="card-body" style="border:1px solid #c3c3c3;">
+            <h3 class="text-center">Subscribe for latest updates</h3>
+            {% csrf_token %}
+            <div class="md-form">
+                {{ form }}
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit">Subscribe</button>
+                </span>
+            </div>
+        </form>
+    </div>
+    <p style="text-align:center;">If you are already a subscriber and would like to unsubscribe from our
+        newsletter and updates, please <a href="{% url 'emailupdates:unsigning' %}">click here</a></p>
+</body>
+{% endblock %}
+

@@ -1,0 +1,134 @@
+{% load static %}
+
+<html lang="en">
+<head>
+<title>Saree House</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="Saree House project">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+
+  <link href="{% static 'css_mdbootstrap/md_productslider.css' %}" rel="stylesheet">
+      <!-- Bootstrap core CSS -->
+  <link href="{% static 'css_mdbootstrap/bootstrap.min.css' %}" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="{% static 'css_mdbootstrap/mdb.min.css' %}" rel="stylesheet">
+  <!-- Your custom styles (optional) -->
+  <link href="{% static 'css_mdbootstrap/style.min.css' %}" rel="stylesheet">
+  <!-- The above style css results in the products by category slider content to disappear but does'nt affect any other div -->
+
+
+
+
+
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" type="text/css">
+<!-- All icons-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- No Use-->
+<link rel="stylesheet" href="{% static 'css/themify-icons.css' %}" type="text/css">
+<!-- No Use-->
+<link rel="stylesheet" href="{% static 'css/elegant-icons.css' %}" type="text/css">
+<!-- No Use-->
+<link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}" type="text/css">
+<!-- No Use-->
+<link rel="stylesheet" href="{% static 'css/nice-select.css' %}" type="text/css">
+<!-- No Use-->
+<link rel="stylesheet" href="{% static 'css/jquery-ui.min.css' %}" type="text/css">
+<!-- No Use-->
+<link rel="stylesheet" href="{% static 'css/slicknav.min.css' %}" type="text/css">
+<!-- Important-->
+<link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet'>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<!-- Slider buttons('<' and '>') -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+<style>
+body,html{
+    width:100%;
+    overflow-x:hidden;
+}
+
+span{
+    font-family:"Lato",sans-serif;
+}
+
+.horzline{
+    display:none;
+}
+
+.vertline{
+    position:absolute;
+    left:70%;
+    height:200px;
+    border:1px solid gray;
+}
+
+.supportcol{
+    width:30%;
+    top:30%;
+    padding:10px;
+}
+
+@media only screen and (max-width: 700px){
+    .horzline{
+        display:block;
+    }
+
+    .vertline{
+        display:none;
+    }
+
+    .supportcol{
+        width:70%;
+        left:10%;
+        padding-left:70px;
+        padding-right:0px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+<div class="footer-logo">
+    <a href="#"><img src="{% static 'img/saree_house_logo_2.png' %}" alt=""></a>
+</div>
+<div class="row">
+    <div class="column" style="width:65%;">
+        <div class="container" style="width:100%;text-align:center;padding-right:0px;">
+            <div style="position:relative;">
+                <span style="font-size:40px;font-family:'Lato',text-decoration:underline;color:blue">SORRY!!</span>
+                <p>Some error occurred and the transaction has been cancelled.Please try again.</p>
+                <a href="{% url 'cart:item-list' %}"><button class="btn btn-amber"  style="position:relative;padding:10px;"><b>Back to Home</b></button></a>
+            </div>
+        </div>
+        <hr class="horzline">
+    </div>
+
+    <div class="column" style="width:5%;">
+        <div class="vertline"></div>
+    </div>
+    <div class="supportcol">
+        <div class="container" style="width:100%;text-align:center;padding:50px 30px 0px 0px;">
+            <span>If transaction errors continue to occur (OR) If you have any other grievances/complaints,please <a href="{% url 'cart:contact' %}">Contact Us</a>. If you need
+            further support, please mail us at sridevi.talluri08@gmail.com</span>
+        </div>
+    </div>
+</div>
+    <aside>
+
+
+
+
+    </aside>
+
+
+
+</body>
+</html>
