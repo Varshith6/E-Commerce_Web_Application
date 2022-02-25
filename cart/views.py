@@ -340,7 +340,6 @@ class PaymentView(View):
                     order.items.remove(x)
             user = self.request.user.id
             form = CheckoutForm()
-            print('hihihi')
             key = settings.PAYU_MERCHANT_KEY
             service_provider = settings.SERVICE_PROVIDER
             email = self.request.user.email
@@ -393,7 +392,7 @@ class PaymentView(View):
 
 
 
-# View to be redirected to if payment is successful
+# View to be redirected to if the payment is successful
 @csrf_exempt
 def payment_success(request):
     print(dict(request.POST))
@@ -601,8 +600,6 @@ def search(request):
     else:
         return redirect('cart:item-list')
     return render(request,'search_results.html',context)
-
-
 
 
 
